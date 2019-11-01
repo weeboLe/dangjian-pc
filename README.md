@@ -27,7 +27,7 @@ npm run lint
 
 
 ```
-1+1 = ？
+1+1 = 2
 ```
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
