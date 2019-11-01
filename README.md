@@ -27,7 +27,7 @@ npm run lint
 
 
 ```
-1+1 = 2
+1+1 = ?
 ```
 我的
 ### Customize configuration
