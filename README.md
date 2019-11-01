@@ -29,6 +29,5 @@ npm run lint
 ```
 1+1 = ?
 ```
-我的
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
