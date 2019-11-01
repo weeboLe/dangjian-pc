@@ -1,0 +1,107 @@
+@charset "utf-8";
+/*CSS Document*/
+.bodyMember{
+    width:100%;
+}
+.memberBox{
+    width:978px;
+    margin:0 auto;
+    padding-left: 22px;
+    padding-bottom: 100px;
+}
+.member .memberNavs{
+    width:100%;
+}
+.memberNavs .memberNav{
+    display: inline-block;
+    padding-top: 15px;
+    margin-right:80px;
+}
+.memberNav p{
+    font-size: 14px;
+    color:black;
+    margin:10px 0;
+}
+/*memberLeft*/
+.memberContent{
+    overflow: hidden;
+}
+.memberContent .memberLeft{
+    width:66%;
+    float:left;
+}
+.memberLeft .mbrLeftReuse{
+    margin-top: 20px;
+}
+.mbrLeftReuse .mbrLeftTit{
+    width:100%;
+    overflow: hidden;
+    line-height: 34px;
+    border-bottom: 2px solid #e5e5e5;
+}
+.mbrLeftTit p{
+    font-size: 18px;
+    float: left;
+    border-bottom:2px solid #ff0000;
+}
+.mbrLeftTit a{
+    font-size: 14px;
+    color:#9a9a9a;
+    float: right;
+    display: block;
+}
+.mbrLeftHrefs{
+    padding:15px 0;
+    list-style-type: square;
+}
+.mbrLeftHrefs .mbrLeftHref{
+    margin-left:20px;
+}
+.mbrLeftHref a{
+    display: block;
+    font-size: 13px;
+    line-height: 32px;
+}
+.mbrLeftHref p{
+    display: inline-block;
+    color:black;
+}
+.mbrLeftHref span{
+    float: right;
+    color:#878787;
+}
+/*memberRight*/
+.memberContent .memberRight{
+    width:30%;
+    float: right;
+}
+.memberRight .mbrRtReuse{
+    margin-top: 20px;
+}
+.mbrRtReuse .mbrRtTit{
+    overflow: hidden;
+    line-height: 36px;
+    border-bottom: 2px solid #ff0000;
+}
+.mbrRtTit p{
+    font-size: 18px;
+    color:white;
+    background-color: #ff0000;
+    float: left;
+    padding:0 12px;
+}
+.mbrRtTit a{
+    float: right;
+    font-size: 14px;
+    color:#9a9a9a;
+}
+.mbrRtReuse .mbrRtHrefs{
+    padding-bottom: 8px;
+}
+.mbrRtHrefs .mbrRtHref{
+    display: block;
+    margin-top: 20px;
+}
+.mbrRtHref img{
+    margin:0 auto;
+}

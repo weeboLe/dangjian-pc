@@ -1,0 +1,291 @@
+@charset "utf-8";
+/*CSS Document*/
+
+/* swiper */
+.bodySwiper{
+  width:100%;
+}
+.swiper-container {
+  width:1920px;
+  height:600px;
+  margin:0 auto;
+}
+.swiper-wrapper{
+  display: flex;
+  width:1920px;
+}
+.swiper-wrapper .swiper-slide{
+  background-color: skyblue;
+  width:1919px;
+  height:600px;
+}
+.swiper-slide img{
+  width:1919px;
+  height:600px;
+}
+/*quick*/
+.bodyQucik{
+    width:100%;
+}
+.bodyQucik .quickBox{
+    width:1000px;
+    margin:0 auto;
+}
+.quickTitleBox .quickTitle{
+    width:120px;
+    height:30px;
+    background-color: #fe0000;
+    color:white;
+    box-shadow: 5px -5px 0px 0px #d6d6d6;
+    margin-top:40px;
+    font-size:18px;
+    line-height:30px;
+    text-align: center;
+}
+.quickBox .quickEnters{
+    width:100%;
+    padding-top:40px;
+    padding-bottom:38px;
+    overflow: hidden;
+}
+.quickEnters .quickEnter{
+    float:left;
+    width:122px;
+}
+.quickEnter .enterImg{
+    height:42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.quickEnter .enterText{
+    font-size:14px;
+    color:black;
+    line-height:46px;
+    text-align: center;
+}
+/*news*/
+.bodyNews{
+    width:100%;
+}
+.news{
+    width:1000px;
+    margin:0 auto;
+    border-top:2px solid #fe0000;
+    background-color:#f5f5f5;
+    overflow: hidden;
+}
+.news .newsImg{
+    float:left;
+}
+.newsImg img{
+    width:600px;
+    height:300px;
+    margin:15px 15px 13px 16px;
+}
+.news .newsBox{
+    float:left;
+    margin-left:15px;
+}
+.newsBox .titleBox{
+    width:100%;
+}
+.titleBox .title{
+    font-size:16px;
+    color:#fe0200;
+    display: inline-block;
+    margin-right:22px;
+    line-height:36px;
+    border-bottom:2px solid #fe0000;
+    position: relative;
+}
+.title .titleBorder{
+    display: block;
+    width:0px;
+    height:0px;
+    border:6px solid transparent;
+    border-top:6px solid #fe0000;
+    position:absolute;
+    left:50%;
+    top:38px;
+    margin-left:-4px;
+}
+.newsBox .hrefBox{
+    width:100%;
+}
+.hrefBox .hrefUl{
+    width:100%;
+    margin-top:16px;
+}
+.hrefUl .hrefLi{
+    width:100%;
+    font-size: 13px;
+    overflow: hidden;
+    line-height: 38px;
+    border-bottom: 1px dashed #c6c6c6;
+}
+.hrefLi a{
+  /*overflow: hidden;*/
+  width:100%;
+  display: block;
+  height:40px;
+}
+.hrefLi .hrefText{
+    width:295px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*float:left;*/
+    margin-right: 15px;
+    color:black;
+  display: inline-block;
+}
+.hrefLi .hrefTime{
+    float:right;
+    padding-right: 5px;
+    color:black;
+}
+.hrefBox .rightHrefs{
+    display: none;
+}
+/*banner*/
+.bodyBanner{
+    width:100%;
+}
+.banner{
+    width:1000px;
+    height:100px;
+    margin:40px auto 30px;
+}
+/*rulerStudy*/
+.bodyRulerStudy{
+    width:100%;
+}
+.bodyRulerStudy .rulerStudy{
+    width:1000px;
+    margin:0 auto;
+    overflow: hidden;
+}
+.rulerStudy .rulerBox{
+    width:56%;
+    float: left;
+}
+.rulerBox .ruler{
+    width:100%;
+}
+.ruler .rulerTitle{
+    border-bottom:1px solid #e5e5e5;
+}
+.rulerTitle .title{
+    padding:0 15px;
+}
+.rulerStudy .hrefUl{
+    list-style-type: disc;
+}
+.rulerStudy .hrefLi{
+    border:none;
+    list-style-type: disc;
+}
+.rulerStudy ul li{
+    list-style-type: disc;
+}
+.ruler .rulerBottom{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.rulerStudy .studyBox{
+    width:43%;
+    float: right;
+    padding-top: 2px;
+}
+.studyBox .study2{
+    padding-top:40px;
+}
+.study .studyTit{
+    background-color: #f4f4f4;
+    border-bottom:1px solid #e5e5e5;
+}
+.studyTit .studyTitText{
+    font-size:16px;
+    color:white;
+    line-height:36px;
+    padding:0 16px;
+    background-color: #fe0000;
+    display:inline-block;
+}
+.studyTit .studyMore{
+    font-size:14px;
+    color:#979797;
+    float:right;
+    margin-right: 16px;
+    line-height:36px;
+}
+.study .studyImgBox{
+    overflow: hidden;
+}
+.studyImgBox .studyImg{
+    width:200px;
+    height:90px;
+    margin-top:20px;
+}
+.studyImgBox .studyImg:nth-child(n){
+    float: left;
+}
+.studyImgBox .studyImg:nth-child(2n){
+    float: right;
+}
+
+/*help*/
+.bodyHelp{
+    width:100%;
+}
+.bodyHelp .help{
+    width:996px;
+    margin:30px auto 0;
+    border:2px solid #d2d2d2;
+    background-color: #f4f4f4;
+}
+.help .helpTitleBox{
+    margin-top:10px;
+}
+.helpTitleBox .helpTitle{
+    font-size: 18px;
+    color:black;
+    line-height:30px;
+    padding:0 15px;
+    display: inline-block;
+}
+.helpTitleBox .helpTitBar{
+    display: inline-block;
+}
+
+.help .helpContent{
+    width:100%;
+}
+.helpContent .helpBox{
+    width:100%;
+    overflow-x:auto;
+    white-space: nowrap;
+}
+.helpBox .helpLink{
+    display: inline-block;
+    padding:15px;
+    margin:15px 15px 0 0;
+}
+.helpLink img{
+}
+.helpLink p{
+    display: inline-block;
+    font-size: 15px;
+    text-align: center;
+}
+
+/*endBanner*/
+.bodyEndBanner{
+    width:100%;
+}
+.bodyEndBanner .endBanner{
+    width:1000px;
+    margin:30px auto 80px;
+}

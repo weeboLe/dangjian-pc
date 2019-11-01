@@ -1,0 +1,96 @@
+@charset "utf-8";
+/*CSS Document*/
+.bodyLearn{
+    width:100%;
+}
+.bodyLearn .learnContent{
+    width:1000px;
+    margin:0 auto;
+}
+.learnContent .learnBox{
+    border:1px solid #dcdcdc;
+}
+/*learnBox*/
+.learnBox{
+    padding:14px 21px;
+    margin-bottom:130px;
+    padding-bottom: 50px;
+    min-height: 500px;
+}
+.learnBox .firstNavs{
+
+}
+.firstNavs .firstNav{
+    display: inline-block;
+    font-size: 15px;
+    color:black;
+    line-height:30px;
+    padding:0 14px;
+    border-radius:3px;
+}
+.firstNavs .firstNav_red{
+    color:#fe4e4e;
+    background-color: #ffe0e0;
+}
+.secondNavs{
+    margin-top:12px;
+    margin-bottom:10px;
+}
+.secondNavs .secondNav{
+    font-size: 14px;
+    color:black;
+    border-bottom:1px solid white;
+    margin-left: 18px;
+    line-height: 20px;
+}
+.secondNavs .secondNav_red{
+    color:#ff0000;
+    border-bottom:1px solid #ff0000;
+}
+
+.second_s .second{
+    width:100%;
+}
+.second1 .sec1{
+    display: block;
+    padding-top: 20px;
+}
+.sec1 .sec1Tit{
+    font-size: 18px;
+    color:#757575;
+    line-height: 20px;
+    border-left:4px solid #ff0000;
+    text-indent: 8px;
+    margin-left: 12px;
+}
+.sec1 .sec1Content{
+    overflow: hidden;
+    margin-top: 20px;
+}
+.sec1Content .sec1-left{
+    float:left;
+    width:78%;
+    height:120px;
+    color:#757575;
+    position: relative;
+}
+.sec1-left .sec1-leftText{
+    font-size: 16px;
+    margin-left:25px;
+    line-height: 24px;
+    height:75px;
+    overflow: hidden;
+}
+.sec1-left .sec1-leftTime{
+    font-size: 12px;
+    position: absolute;
+    right:5px;
+    bottom:5px;
+}
+.sec1Content .sec1-right{
+    float: left;
+    width:22%;
+}
+.sec1-right img{
+    margin:0 auto;
+}

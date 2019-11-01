@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+/*CSS Document*/
+.bodyAffairs {
+  width: 100%;
+}
+
+.bodyAffairs .affairsBox {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.affairsBox .affairs {
+  width: 100%;
+  border: 1px solid #dcdcdc;
+  overflow: hidden;
+  margin-bottom: 130px;
+}
+
+.affairs .affairsLeft {
+  float: left;
+  background-color: #eeeeee;
+  padding: 20px;
+  width: 160px;
+  height: 600px;
+  list-style-type: none;
+}
+
+.affairsLeft .afrNav {
+  display: block;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 16px;
+  box-shadow: -3px 6px 5px 0 rgba(0, 0, 0, .3);
+  text-align: center;
+  background-image: url("../images/afrNav.png");
+  background-size: 160px 46px;
+  width: 160px;
+  height: 46px;
+  line-height: 46px;
+}
+
+.affairs .affairsRight {
+  width: 800px;
+  float: right;
+  height: 600px;
+}
+
+.affairsRight .afrTitle {
+  margin: 10px 5px 0 20px;
+  border-bottom: 1px solid #d2d2d2;
+  overflow: hidden;
+}
+
+.afrTitle p {
+  font-size: 20px;
+  line-height: 20px;
+  border-left: 4px solid red;
+  text-indent: 10px;
+  margin: 15px 0;
+  margin-left: 5px;
+}
+
+.afrCon {
+  width: 100%;
+  padding-top: 15px;
+  overflow-y: auto;
+}
+
+.afrCon .afrConHref {
+  display: block;
+  font-size: 16px;
+  overflow: hidden;
+  line-height: 26px;
+}
+
+.afrConHref p {
+  color: black;
+  float: left;
+  margin-left: 40px;
+}
+
+.afrConHref span {
+  color: #ababab;
+  float: right;
+  margin-right: 25px;
+}

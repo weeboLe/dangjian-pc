@@ -1,0 +1,123 @@
+@charset "utf-8";
+/*CSS Document*/
+.bodyDues{
+    width:100%;
+}
+.bodyDues .duesBox{
+    width:960px;
+    margin:0 auto 150px;
+    border:1px solid #e5e5e5;
+    padding:0 20px;
+}
+.duesBox .duesQuery{
+    margin-top: 20px;
+    border-top: 1px solid #e5e5e5;
+}
+.duesQryTit{
+    overflow: hidden;
+    margin:20px 0 0 6px;
+}
+.duesQryTit img{
+    float: left;
+}
+.duesQryTit p{
+    font-size: 15px;
+    color:#f90505;
+    float: left;
+    margin-top:10px;
+    text-indent: 10px;
+}
+.duesQuery .queryResult{
+    background-color: #eeeeee;
+    margin:10px;
+    overflow: hidden;
+    font-size: 15px;
+    color:#77787a;
+    line-height: 32px;
+}
+.queryResult .qryLeft{
+    float: left;
+    width:50%;
+    padding-left: 100px;
+    box-sizing: border-box;
+    margin:15px 0;
+}
+.queryResult .qryRight{
+    float: left;
+    width:50%;
+    padding-left: 100px;
+    box-sizing: border-box;
+    border-left:2px solid white;
+    margin:15px 0;
+}
+.queryResult #qryNumber{
+    font-size: 16px;
+    border:none;
+    height:20px;
+}
+.queryResult #qryBtn{
+    font-size: 16px;
+    padding:0 5px;
+}
+.duesPay .payMonthBox{
+
+}
+.payMonthBox a{
+    width:218px;
+    height:70px;
+    background-color: #eeeeee;
+    font-size: 22px;
+    color:black;
+    display: inline-block;
+    margin:9px;
+    line-height: 70px;
+    text-align: center;
+    border-radius: 5px;
+}
+.payMonthBox a:nth-child(1){
+    background-color: #f90505;
+    color:white;
+}
+.payMonthBox a:nth-child(4n){
+    margin-right: 0;
+}
+
+.payMode .modeSelectBox{
+    padding-top: 20px;
+    padding-left: 20px;
+    overflow: hidden;
+}
+.modeSelectBox .modeSelect{
+    display: inline-block;
+    margin-top:15px;
+    margin-right: 10px;
+    float: left;
+}
+.modeSelectBox .payMode-zfb{
+    display:inline-block;
+    width:105px;
+    height:38px;
+    margin-right: 50px;
+    float: left;
+}
+.modeSelectBox .payMode-wx{
+    display:inline-block;
+    width:149px;
+    height:34px;
+    float: left;
+}
+.modeSelectBox .payBtnBox{
+    float: left;
+    width:100%;
+    margin:50px 0;
+    text-align: center;
+}
+.payBtnBox .payBtn{
+    width:200px;
+    height:45px;
+    font-size: 18px;
+    color:white;
+    background-color: #ff0000;
+    border:none;
+    border-radius: 5px;
+}

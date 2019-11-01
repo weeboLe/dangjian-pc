@@ -1,0 +1,62 @@
+@charset "utf-8";
+/*CSS Document*/
+/*learnBox*/
+.bodyLearn{
+    width:100%;
+}
+.bodyLearn .learnContent{
+    width:1000px;
+    margin:0 auto;
+}
+.learnContent .learnBox{
+    border:1px solid #dcdcdc;
+    padding:14px 21px;
+    margin-bottom:200px;
+    min-height: 600px;
+}
+.firstNavs .firstNav{
+    display: inline-block;
+    font-size: 15px;
+    color:black;
+    line-height:30px;
+    padding:0 14px;
+    border-radius:5px;
+}
+.firstNavs .firstNav_red{
+    color:#fe4e4e;
+    background-color: #ffe0e0;
+}
+.secondNavs{
+    margin-top:12px;
+    margin-bottom:35px;
+}
+.secondNavs .secondNav{
+    font-size: 14px;
+    color:black;
+    border-bottom:1px solid white;
+    margin-left: 18px;
+    line-height: 20px;
+}
+.secondNavs .secondNav_red{
+    color:#ff0000;
+    border-bottom:1px solid #ff0000;
+}
+
+.second_s .second{
+    width:100%;
+}
+.second1 .sec1{
+    display:inline-block;
+    background-color: #eeeeee;
+    border-radius: 6px;
+    box-shadow: 5px 5px 6px 1px #dfdede;
+    margin-bottom: 50px;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+.sec1 .sec1Text{
+    font-size: 12px;
+    color:#838383;
+    text-indent: 10px;
+    line-height: 40px;
+}

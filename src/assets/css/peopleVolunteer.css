@@ -1,0 +1,65 @@
+@charset "utf-8";
+/*CSS Document*/
+/*learnBox*/
+.bodyActivity{
+    width:100%;
+}
+.bodyActivity .activityBox{
+    width:1000px;
+    margin:0 auto;
+}
+.activityBox .activity{
+    border:1px solid #dcdcdc;
+    padding:14px 21px;
+    margin-bottom:200px;
+    min-height: 600px;
+}
+.firstNavs .firstNav{
+    display: inline-block;
+    font-size: 15px;
+    color:black;
+    line-height:30px;
+    padding:0 14px;
+    border-radius:5px;
+}
+.firstNavs .firstNav_red{
+    color:#fe4e4e;
+    background-color: #ffe0e0;
+}
+.activity .activityHead{
+    font-size: 22px;
+    text-align: center;
+    margin-top: 50px;
+}
+.activity .activityTime{
+    font-size: 16px;
+    text-align: center;
+    margin:15px 0 20px;
+}
+.activity .activityImgs{
+    text-align: center;
+}
+.activityImgs .activityImg{
+    display: inline-block;
+    margin:5px;
+}
+.activity .activityText{
+
+}
+.activityText div{
+    border:none !important;
+}
+.activity .joinBox{
+    width:100%;
+}
+.activity .joinBtn{
+    font-size: 26px;
+    color:white;
+    background-color: #ff0000;
+    line-height: 60px;
+    width:350px;
+    display: block;
+    text-align: center;
+    border-radius: 8px;
+    margin:50px auto;
+}

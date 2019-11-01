@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+/*CSS Document*/
+.bodyData {
+  width: 100%;
+}
+
+.bodyData .dataBox {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.dataBox .dataAnalysis {
+  width: 100%;
+  border: 1px solid #dcdcdc;
+  overflow: hidden;
+  margin-bottom: 200px;
+}
+
+.dataAnalysis .dataLeft {
+  float: left;
+  background-color: #eeeeee;
+  padding: 20px;
+  width: 160px;
+  height: 600px;
+  list-style-type: none;
+}
+
+.dataLeft .dataNav {
+  display: block;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 16px;
+  box-shadow: -3px 6px 5px 0 rgba(0, 0, 0, .3);
+  text-align: center;
+  background-image: url("../images/afrNav.png");
+  background-size: 160px 46px;
+  width: 160px;
+  height: 46px;
+  line-height: 46px;
+}
+
+.dataAnalysis .dataRight {
+  width: 800px;
+  float: right;
+  height: 600px;
+}

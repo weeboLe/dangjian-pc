@@ -1,0 +1,63 @@
+@charset "utf-8";
+/*CSS Document*/
+.bodyLearn{
+    width:100%;
+}
+.bodyLearn .learnContent{
+    width:1000px;
+    margin:0 auto;
+    min-height: 600px;
+}
+.voteBox{
+    width:100%;
+    background-color: #eeeeee;
+    border:1px solid #dcdcdc;
+    padding-top: 30px;
+    padding-left: 25px;
+    box-sizing: border-box;
+}
+.voteBox .vote{
+    width:150px;
+    height:200px;
+    background-color: #dcdcdc;
+    position: relative;
+    display: inline-block;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    box-shadow: 3px 3px 5px 2px #a2a1a1;
+}
+.vote .voteIcon{
+    font-size: 12px;
+    color:white;
+    background-color: #ff0000;
+    display: inline-block;
+    position: absolute;
+    top:5px;
+    right:5px;
+    line-height: 18px;
+    padding:0 8px;
+    border-radius: 3px;
+}
+.vote .voteImg{
+    width:150px;
+    height:150px;
+}
+.vote .voteName{
+    font-size: 18px;
+    color:black;
+    line-height: 50px;
+    text-align: center;
+}
+.vote .voteShade{
+    width:150px;
+    height:200px;
+    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    left:0;
+    top:0;
+    font-size: 20px;
+    color:white;
+    line-height: 200px;
+    text-align: center;
+    display: none;
+}

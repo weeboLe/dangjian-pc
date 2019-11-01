@@ -1,0 +1,100 @@
+@charset "utf-8";
+/*CSS Document*/
+/*learnBox*/
+.bodyLearn{
+    width:100%;
+}
+.bodyLearn .learnContent{
+    width:1000px;
+    margin:0 auto;
+}
+.learnContent .learnBox{
+    border:1px solid #dcdcdc;
+    padding:14px 21px;
+    margin-bottom:200px;
+    min-height: 600px;
+}
+.firstNavs .firstNav{
+    display: inline-block;
+    font-size: 15px;
+    color:black;
+    line-height:30px;
+    padding:0 14px;
+    border-radius:5px;
+}
+.firstNavs .firstNav_red{
+    color:#fe4e4e;
+    background-color: #ffe0e0;
+}
+.learnBox .helpBox{
+    margin-top: 22px;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+.helpBox .helpLeft{
+    float:left;
+    width:45%;
+}
+.helpLeft img{
+    width:400px;
+    height:260px;
+}
+.helpBox .helpRight{
+    float:left;
+    width:55%;
+}
+.helpRight .helpHead{
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 5px;
+    height:90px;
+    overflow: hidden;
+}
+.helpRight .helpTime{
+    font-size: 16px;
+    color:#919191;
+    margin-bottom: 20px;
+    line-height: 15px;
+}
+.helpRight .mallPrice{
+    font-size: 16px;
+    color:#919191;
+    margin-bottom: 20px;
+    line-height: 15px;
+}
+.mallPrice span{
+    color:#ff0000;
+}
+.helpRight .helpIcon{
+    font-size: 16px;
+    color:white;
+    background-color: #e60012;
+    display: inline-block;
+    line-height: 40px;
+    padding:0 40px;
+    border-radius: 3px;
+    margin-top: 50px;
+}
+.helpDetailsTit{
+    font-size: 15px;
+    border-bottom: 2px solid #e60012;
+    display: inline-block;
+    padding:0 5px;
+}
+.helpDetailsText{
+    border-top: 1px solid #dcdcdc;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.helpDetailsText div{
+    border:none!important;
+}
+.helpDetailsText .mallGoodsImg{
+    display: block;
+    margin:30px auto;
+}
+.helpDetailsText .mallGoodsText{
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+}

@@ -1,0 +1,25 @@
+@charset "utf-8";
+/*CSS Document*/
+.bodyFrame{
+    width:100%;
+}
+.bodyFrame .frameBox{
+    width:1000px;
+    margin:0 auto 200px;
+
+}
+.frameBox .frame{
+    border:1px solid #dcdcdc;
+    min-height: 600px;
+}
+.frame .frameTit{
+    margin:10px 5px;
+    border-bottom: 1px solid #dcdcdc;
+    padding:15px 0 15px 15px;
+}
+.frameTit p{
+    font-size: 20px;
+    line-height: 20px;
+    border-left: 4px solid #ff0000;
+    text-indent: 8px;
+}

@@ -1,0 +1,16 @@
+@charset "utf-8";
+/*CSS Document*/
+/*learnBox*/
+.bodyFile{
+    width:100%;
+}
+.bodyFile .fileBox{
+    width:1000px;
+    margin:0 auto;
+}
+.fileBox .file{
+    border:1px solid #dcdcdc;
+    padding:14px 21px;
+    margin-bottom:200px;
+    min-height: 600px;
+}
