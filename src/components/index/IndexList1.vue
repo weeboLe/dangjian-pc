@@ -15,8 +15,8 @@
         <li class="hrefLi" v-for="(l,index) in leftHrefs_data.list" :key="index">
           <router-link
             tag="a"
-            :to="{path:'/newsParty',query:{'dataid':l.keyid,chn:leftHrefs_data.chn}}"
-            :title="l.hrefText"
+            :to="{path:'/newsParty',query:{'datakey':l.keyid,chn:leftHrefs_data.chn}}"
+            :title="l.title"
           >
             <p class="hrefText">{{l.title}}</p>
             <span class="hrefTime">{{l.createtime | createtime}}</span>
@@ -24,10 +24,14 @@
         </li>
       </ul>
       <ul class="hrefUl rightHrefs" v-show="rightTab">
-        <li class="hrefLi" v-for="(r,index) in rightHrefs_data" :key="index">
-          <router-link tag="a" to="/informDetails" href="#" :title="r.hrefText">
+        <li class="hrefLi" v-for="(r,index) in rightHrefs_data.list" :key="index">
+          <router-link
+            tag="a"
+            :to="{path:'/informDetails',query:{'datakey':r.keyid,chn:leftHrefs_data.chn}}"
+            :title="r.title"
+          >
             <p class="hrefText">{{r.title}}</p>
-            <span class="hrefTime">{{r.createtime}}</span>
+            <span class="hrefTime">{{r.createtime | createtime}}</span>
           </router-link>
         </li>
       </ul>
@@ -36,7 +40,7 @@
 </template>
 
 <script>
-import { index } from "@/api";
+import { index, common } from "@/api";
 import { dateFormat } from "@/tool";
 
 export default {
@@ -48,36 +52,7 @@ export default {
       leftTit: true,
       rightTit: false,
       leftHrefs_data: { list: [], chn: "" },
-      rightHrefs_data: [
-        {
-          title: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          createtime: "8-24"
-        },
-        {
-          title: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          createtime: "8-24"
-        },
-        {
-          title: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          createtime: "8-24"
-        },
-        {
-          title: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          createtime: "8-24"
-        },
-        {
-          title: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          createtime: "8-24"
-        },
-        {
-          title: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          createtime: "8-24"
-        },
-        {
-          title: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          createtime: "8-24"
-        }
-      ]
+      rightHrefs_data: { list: [], chn: "" }
     };
   },
   methods: {
@@ -98,17 +73,29 @@ export default {
       this.$refs.rightBorder.style.borderBottom = "2px solid #fe0000";
     },
     getdjyw() {
-      index
-        .notice({ chn: "djyw", curPage: 1, pageSize: 7 })
+      common
+        .column({ chn: "djyw", curPage: 1, pageSize: 7 })
         .then(res => {
           this.leftHrefs_data.list = res.datas;
           this.leftHrefs_data.chn = "djyw";
+        })
+        .catch(e => {});
+    },
+    gettzggd() {
+      common
+        .column({ chn: "tzggd", curPage: 1, pageSize: 7 })
+        .then(res => {
+          console.log(res);
+
+          this.rightHrefs_data.list = res.datas;
+          this.rightHrefs_data.chn = "tzggd";
         })
         .catch(e => {});
     }
   },
   mounted() {
     this.getdjyw();
+    this.gettzggd();
   },
   filters: {
     createtime(val) {

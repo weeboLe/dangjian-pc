@@ -5,8 +5,12 @@
     </div>
     <div class="hrefBox">
       <ul class="hrefUl leftHrefs">
-        <li class="hrefLi" v-for="(l,index) in leftHrefs_data" :key="index">
-          <router-link tag="a" to="/newsParty" href="#" :title="l.hrefText">
+        <li class="hrefLi" v-for="(l,index) in leftHrefs_data.list" :key="index">
+          <router-link
+            tag="a"
+            :to="{path:'/newsParty',query:{'datakey':l.keyid,chn:leftHrefs_data.chn}}"
+            :title="l.title"
+          >
             <p class="hrefText">{{l.title}}</p>
             <span class="hrefTime">{{l.createtime | createtime}}</span>
           </router-link>
@@ -17,21 +21,25 @@
 </template>
 
 <script>
-import { index } from "@/api";
+import { index, common } from "@/api";
 import { dateFormat } from "@/tool";
 export default {
   name: "IndexNav1Right",
   data() {
     return {
-      leftHrefs_data: []
+      leftHrefs_data: {
+        list: [],
+        chn: ""
+      }
     };
   },
   methods: {
     getdjyw() {
-      index
-        .notice({ chn: "djyw", curPage: 1, pageSize: 10 })
+      common
+        .column({ chn: "djyw", curPage: 1, pageSize: 7 })
         .then(res => {
-          this.leftHrefs_data = res.datas;
+          this.leftHrefs_data.list = res.datas;
+          this.leftHrefs_data.chn = "djyw";
         })
         .catch(e => {});
     }

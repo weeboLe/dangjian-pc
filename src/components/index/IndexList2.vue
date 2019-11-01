@@ -6,16 +6,23 @@
     </div>
     <div class="hrefBox">
       <ul class="hrefUl leftHrefs" v-show="leftTab">
-        <li class="hrefLi" v-for="(item,index) in leftHrefs_data" :key="index">
-          <router-link tag="a" to="/newsParty" href="#" :title="item.title">
+        <li class="hrefLi" v-for="(item,index) in leftHrefs_data.list" :key="index">
+          <router-link
+            :title="item.title"
+            :to="{path:'/newsParty',query:{'datakey':item.keyid,chn:rightHrefs_data.chn}}"
+          >
             <p class="hrefText">{{item.title}}</p>
             <span class="hrefTime">{{item.createtime | createtime}}</span>
           </router-link>
         </li>
       </ul>
       <ul class="hrefUl rightHrefs" v-show="rightTab">
-        <li class="hrefLi" v-for="(item,index) in rightHrefs_data" :key="index">
-          <router-link tag="a" to="/informDetails" href="#" :title="item.title">
+        <li class="hrefLi" v-for="(item,index) in rightHrefs_data.list" :key="index">
+          <router-link
+            :to="{path:'/informDetails',query:{'datakey':item.keyid,chn:rightHrefs_data.chn}}"
+            href="#"
+            :title="item.title"
+          >
             <p class="hrefText">{{item.title}}</p>
             <span class="hrefTime">{{item.createtime | createtime}}</span>
           </router-link>
@@ -26,7 +33,7 @@
 </template>
 
 <script>
-import { index } from "@/api";
+import { index, common } from "@/api";
 import { dateFormat } from "@/tool";
 export default {
   name: "IndexList2",
@@ -37,8 +44,8 @@ export default {
       leftTit: true,
       rightTit: false,
       newsLeftImg: require("@/assets/images/newsImg.png"),
-      leftHrefs_data: [],
-      rightHrefs_data: []
+      leftHrefs_data: { list: [], chn: "" },
+      rightHrefs_data: { list: [], chn: "" }
     };
   },
   methods: {
@@ -55,18 +62,20 @@ export default {
       this.$refs.rightBorder.style.borderBottom = "2px solid #fe0000";
     },
     getTzgg() {
-      index
-        .notice({ chn: "djyw", curPage: 1, pageSize: 6 })
+      common
+        .column({ chn: "djyw", curPage: 1, pageSize: 6 })
         .then(res => {
-          this.leftHrefs_data = res.datas;
+          this.leftHrefs_data.list = res.datas;
+          this.rightHrefs_data.chn = "djyw";
         })
         .catch(e => {});
     },
     getzdwj() {
-      index
-        .notice({ chn: "tzggd", curPage: 1, pageSize: 6 })
+      common
+        .column({ chn: "tzggd", curPage: 1, pageSize: 6 })
         .then(res => {
-          this.rightHrefs_data = res.datas;
+          this.rightHrefs_data.list = res.datas;
+          this.rightHrefs_data.chn = "tzggd";
         })
         .catch(e => {});
     }

@@ -28,6 +28,7 @@ export default {
 /*news*/
 .bodyNews {
   width: 100%;
+  height: 350px;
 }
 .news {
   width: 1000px;

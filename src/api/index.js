@@ -3,15 +3,12 @@ import Vue from 'vue'
 import { post } from '../http'
 import base from './base'
 
-
 const url = '/dangjian_api';
-
 // 接口统一管理
-
 // 通用api
 export const common = {
-
-
+  column: (par) => post(url + 'api/cms/channel/channleListData', par),
+  columnData: (par) => post(url + 'api/cms/channel/channleContentData', par)
   // 栏目
 }
 // 登录
