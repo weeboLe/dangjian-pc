@@ -7,18 +7,24 @@
     </div>
     <div class="hrefBox">
       <ul class="hrefUl leftHrefs" v-show="leftTab">
-        <li class="hrefLi" v-for="(l,index) in leftHrefs_data" :key="index">
-          <router-link tag="a" to="/newsParty" href="#" :title="l.hrefText">
-            <p class="hrefText">{{l.hrefText}}</p>
-            <span class="hrefTime">{{l.hrefTime}}</span>
+        <li class="hrefLi" v-for="(l,index) in leftHrefs_data.list" :key="index">
+          <router-link
+            :title="l.hrefText"
+            :to="{path:'/newsParty',query:{'datakey':l.keyid,'chn':leftHrefs_data.chn}}"
+          >
+            <p class="hrefText">{{l.title}}</p>
+            <span class="hrefTime">{{l.createtime | createtime('mm-dd')}}</span>
           </router-link>
         </li>
       </ul>
       <ul class="hrefUl rightHrefs" v-show="rightTab">
-        <li class="hrefLi" v-for="(r,index) in rightHrefs_data" :key="index">
-          <router-link tag="a" to="/informDetails" href="#" :title="r.hrefText">
-            <p class="hrefText">{{r.hrefText}}</p>
-            <span class="hrefTime">{{r.hrefTime}}</span>
+        <li class="hrefLi" v-for="(r,index) in rightHrefs_data.list" :key="index">
+          <router-link
+            :title="r.hrefText"
+            :to="{path:'/informDetails',query:{'datakey':r.keyid,'chn':rightHrefs_data.chn}}"
+          >
+            <p class="hrefText">{{r.title}}</p>
+            <span class="hrefTime">{{r.createtime | createtime('mm-dd')}}</span>
           </router-link>
         </li>
       </ul>
@@ -27,6 +33,8 @@
 </template>
 
 <script>
+import { index, common } from "@/api";
+// import { dateFormat } from "@/tool";
 export default {
   name: "IndexList3",
   data() {
@@ -37,61 +45,12 @@ export default {
       leftTit: true,
       rightTit: false,
       newsLeftImg: require("@/assets/images/newsImg.png"),
-      leftHrefs_data: [
-        {
-          hrefText: "党员干部这些曾被点名通报的 ”特产“ 不能收",
-          hrefTime: "01-01"
-        },
-        {
-          hrefText: "党员干部这些曾被点名通报的 ”特产“ 不能收",
-          hrefTime: "01-01"
-        },
-        {
-          hrefText: "党员干部这些曾被点名通报的 ”特产“ 不能收",
-          hrefTime: "01-01"
-        },
-        {
-          hrefText: "党员干部这些曾被点名通报的 ”特产“ 不能收",
-          hrefTime: "01-01"
-        },
-        {
-          hrefText: "党员干部这些曾被点名通报的 ”特产“ 不能收",
-          hrefTime: "01-01"
-        },
-        {
-          hrefText: "党员干部这些曾被点名通报的 ”特产“ 不能收",
-          hrefTime: "01-01"
-        }
-      ],
-      rightHrefs_data: [
-        {
-          hrefText: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          hrefTime: "8-24"
-        },
-        {
-          hrefText: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          hrefTime: "8-24"
-        },
-        {
-          hrefText: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          hrefTime: "8-24"
-        },
-        {
-          hrefText: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          hrefTime: "8-24"
-        },
-        {
-          hrefText: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          hrefTime: "8-24"
-        },
-        {
-          hrefText: "关于印发《中共山阳县委组织部机关管理制度》的通知",
-          hrefTime: "8-24"
-        }
-      ]
+      leftHrefs_data: { list: [], chn: "" },
+      rightHrefs_data: { list: [], chn: "" }
     };
   },
   methods: {
+    //  职工之家和团旗飘飘都是导航栏目，这里采用其第一条子内容栏目来做列表展示
     showLeft() {
       this.leftTab = true;
       this.rightTab = false;
@@ -103,7 +62,34 @@ export default {
       this.rightTab = true;
       this.$refs.leftBorder.style.borderBottom = "2px solid transparent";
       this.$refs.rightBorder.style.borderBottom = "2px solid #fe0000";
+    },
+    getZgzjC() {
+      common
+        .column({
+          chn: "jszn",
+          curPage: 1,
+          pageSize: 6
+          // ticket: "7"
+        })
+        .then(res => {
+          this.leftHrefs_data.list = res.datas;
+          this.leftHrefs_data.chn = "jszn";
+        })
+        .catch(e => {});
+    },
+    getTqppC() {
+      common
+        .column({ chn: "qnxf", curPage: 1, pageSize: 6 })
+        .then(res => {
+          this.rightHrefs_data.list = res.datas;
+          this.rightHrefs_data.chn = "qnxf";
+        })
+        .catch(e => {});
     }
+  },
+  mounted() {
+    this.getZgzjC();
+    this.getTqppC();
   }
 };
 </script>
@@ -111,6 +97,7 @@ export default {
 <style scoped>
 .ruler {
   width: 100%;
+  height: 300px;
 }
 .ruler .rulerTitle {
   border-bottom: 1px solid #e5e5e5;

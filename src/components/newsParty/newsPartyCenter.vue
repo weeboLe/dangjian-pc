@@ -62,9 +62,9 @@ export default {
 .main {
   margin-bottom: 40px;
 }
-.main img {
+.main >>> img {
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 .main >>> p,

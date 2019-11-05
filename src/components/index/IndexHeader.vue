@@ -50,6 +50,8 @@ export default {
       var state = confirm("确定要退出吗");
       if (state) {
         localStorage.setItem("ticket", "");
+        localStorage.setItem("sessionId", "");
+        localStorage.setItem("user", "");
         this.$router.push({ name: "Login" });
       }
     }

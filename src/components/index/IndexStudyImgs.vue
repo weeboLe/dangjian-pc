@@ -8,31 +8,48 @@
       >更多&gt;&gt;</router-link>
     </div>
     <div class="studyImgBox">
-      <router-link tag="a" to="/photoDetails" href="#" class="studyImg">
-        <img src="~@/assets/images/study1.png" alt />
-      </router-link>
-      <router-link tag="a" to="/photoDetails" href="#" class="studyImg">
-        <img src="~@/assets/images/study2.png" alt />
-      </router-link>
-      <router-link tag="a" to="/photoDetails" href="#" class="studyImg">
-        <img src="~@/assets/images/study3.png" alt />
-      </router-link>
-      <router-link tag="a" to="/photoDetails" href="#" class="studyImg">
-        <img src="~@/assets/images/study4.png" alt />
-      </router-link>
-      <router-link tag="a" to="/photoDetails" href="#" class="studyImg">
-        <img src="~@/assets/images/study5.png" alt />
-      </router-link>
-      <router-link tag="a" to="/photoDetails" href="#" class="studyImg">
-        <img src="~@/assets/images/study6.png" alt />
+      <router-link
+        :to="{ path:'/photoDetails', query:{ 'datakey': item.keyid,'chn': ztData.chn } }"
+        class="studyImg"
+        v-for="(item) in ztData.list"
+        :key="item.keyid"
+      >
+        <img :src="base.imgurl + item.sacleImage" v-if="item.sacleImage.length != 0" />
+        <div class="studyContent" v-else>{{item.title}}</div>
       </router-link>
     </div>
   </div>
 </template>
 
 <script>
+import { index, common } from "@/api";
+import base from "@/api/base";
 export default {
-  name: "IndexStudyImgs"
+  name: "IndexStudyImgs",
+  data() {
+    return {
+      ztData: { list: [], chn: "" },
+      base
+    };
+  },
+  methods: {
+    getatlm() {
+      common
+        .column({
+          chn: "shyk",
+          curPage: 1,
+          pageSize: 6
+        })
+        .then(res => {
+          this.ztData.list = res.datas;
+          this.ztData.chn = "shyk";
+        })
+        .catch(e => {});
+    }
+  },
+  mounted() {
+    this.getatlm();
+  }
 };
 </script>
 
@@ -58,11 +75,24 @@ export default {
 }
 .study .studyImgBox {
   overflow: hidden;
+  min-height: 330px;
 }
+
 .studyImgBox .studyImg {
   width: 200px;
   height: 90px;
   margin-top: 20px;
+  overflow: hidden;
+}
+
+.studyContent {
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .studyImgBox .studyImg:nth-child(n) {
   float: left;

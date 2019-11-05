@@ -1,7 +1,6 @@
 // 接口封装
 import Vue from 'vue'
 import { post } from '../http'
-import base from './base'
 
 const url = '/dangjian_api';
 // 接口统一管理

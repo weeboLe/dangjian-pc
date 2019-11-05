@@ -38,11 +38,9 @@ export default {
         .login(this.params)
         .then(res => {
           if (res.type == "success") {
-            let ticket = localStorage.setItem("ticket", res.data.ticket);
-            let sessionId = localStorage.setItem(
-              "user",
-              JSON.stringify(res.data)
-            );
+            localStorage.setItem("ticket", res.data.ticket);
+            localStorage.setItem("sessionId", res.data.sessionId);
+            localStorage.setItem("user", JSON.stringify(res.data));
             this.$router.push({ name: "Index" });
           } else {
             this.$message.error({ message: "信息错误请核对后提交" });

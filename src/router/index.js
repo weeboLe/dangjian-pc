@@ -97,7 +97,7 @@ const PartyHistory3 = () => import("../components/partyFlag/paryHistory/partyHis
 Vue.use(Router);
 
 
-const router = new Router({
+export const router = new Router({
   // mode: 'history',
   linkActiveClass: 'active',
   routes: [
@@ -596,7 +596,6 @@ const router = new Router({
     }
 
 
-
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -611,6 +610,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   let ticket = localStorage.getItem('ticket');
   let routerName = to.name;
+
   if (routerName != "Login") {
     if (!ticket) {
       return next({ path: '/login' })
@@ -627,4 +627,4 @@ router.beforeEach((to, from, next) => {
 
 
 
-export default router
+
