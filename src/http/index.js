@@ -1,5 +1,6 @@
 // axios 封装
 import axios from 'axios';
+// import axios from 'axios';
 import QS from 'qs';
 import { log } from 'util';
 // 请求拦截
@@ -13,9 +14,17 @@ axios.interceptors.request.use(config => {
 // 响应拦截器
 axios.interceptors.response.use(response => {
   // 拦截处理返回状态
+  if (response.type == 'needlogin') {
+    localStorage.setItem("ticket", "");
+  }
+
   return Promise.resolve(response);
   // 这里可以处理登录过期的一些方法
+
+
 }, error => {
+
+
   return Promise.reject(error);
 
 })

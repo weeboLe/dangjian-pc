@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import {common} from '@/api'
-  import { format } from 'path';
+import { common } from "@/api";
+import { format } from "path";
 export default {
   name: "informDetailsCenter",
   data() {
@@ -25,6 +25,7 @@ export default {
     common
       .columnData(data)
       .then(res => {
+        console.log(res);
         if (res.type == "success") {
           this.title = res.data.title;
           this.content = res.data.content;
@@ -62,7 +63,10 @@ export default {
 .main {
   margin-bottom: 40px;
 }
-
+.main img {
+  max-width: 100%;
+  margin: 0 auto;
+}
 .main >>> p,
 .main >>> span {
   font-size: 16px;

@@ -24,6 +24,8 @@ export default {
     common
       .columnData(data)
       .then(res => {
+        console.log(res);
+
         if (res.type == "success") {
           this.title = res.data.title;
           this.content = res.data.content;

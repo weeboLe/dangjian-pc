@@ -30,16 +30,16 @@
 </template>
 
 <script>
-    export default {
-        name: "publicNav"
-    }
+export default {
+  name: "publicNav"
+};
 </script>
 
 <style scoped>
-  ._navBtn{
-    background-color: white;
-  }
-  ._navBtn .navText{
-    color:black;
-  }
+._navBtn {
+  background-color: white;
+}
+._navBtn .navText {
+  color: black;
+}
 </style>

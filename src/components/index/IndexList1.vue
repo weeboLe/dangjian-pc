@@ -85,8 +85,6 @@ export default {
       common
         .column({ chn: "tzggd", curPage: 1, pageSize: 7 })
         .then(res => {
-          console.log(res);
-
           this.rightHrefs_data.list = res.datas;
           this.rightHrefs_data.chn = "tzggd";
         })
