@@ -1,19 +1,17 @@
 <template>
   <div class="second second1">
     <router-link
-      tag="a"
       class="sec1"
-      to="/photoDetails"
-      href="#"
-      v-for="(o,index) in onlineSchool1_data"
+      :to="{path:'/photoDetails',query:{'datakey':o.keyid,'chn':onlineSchool1_data.chn}}"
+      v-for="(o,index) in onlineSchool1_data.list"
       :key="index"
     >
-      <img class="sec1Img" :src="o.onlineSchool1Img" alt />
-      <p class="sec1Text">{{o.onlineSchool1Text}}</p>
+      <img class="sec1Img" :src="base.imgurl + o.sacleImage" />
+      <p class="sec1Text">{{ o.title }}</p>
       <div class="sec1Bottom">
-        <p class="sec1Time">{{o.onlineSchool1Time}}</p>
+        <!-- <p class="sec1Time">{{o.title}}</p> -->
         <p class="sec1Add">
-          <span class="studyNum">{{o.onlineSchool1Num}}</span>
+          <span class="studyNum">{{ o.onlineSchool1Num }}</span>
           人已学习
         </p>
       </div>
@@ -22,31 +20,35 @@
 </template>
 
 <script>
+import { common } from "@/api";
+import base from "@/api/base";
 export default {
   name: "LearnOnlineSchool1",
   data() {
     return {
-      onlineSchool1_data: [
-        {
-          onlineSchool1Img: require("@/assets/images/onlineSchool1-1.png"),
-          onlineSchool1Text: "1全国两会解读聚焦两会PPT",
-          onlineSchool1Time: "已过期",
-          onlineSchool1Num: "4"
-        },
-        {
-          onlineSchool1Img: require("@/assets/images/onlineSchool1-2.jpg"),
-          onlineSchool1Text: "1全国两会解读聚焦两会PPT",
-          onlineSchool1Time: "已过期",
-          onlineSchool1Num: "4"
-        },
-        {
-          onlineSchool1Img: require("@/assets/images/onlineSchool3-1.jpg"),
-          onlineSchool1Text: "1全国两会解读聚焦两会PPT",
-          onlineSchool1Time: "已过期",
-          onlineSchool1Num: "4"
-        }
-      ]
+      onlineSchool1_data: { list: [], chn: "" },
+      base
     };
+  },
+
+  methods: {
+    getwsdx() {
+      common
+        .column({
+          chn: "wsdx",
+          curPage: 1,
+          pageSize: 6,
+          fileClassify: 1
+        })
+        .then(res => {
+          this.onlineSchool1_data.list = res.datas;
+          this.onlineSchool1_data.chn = "wsdx";
+        })
+        .catch(e => {});
+    }
+  },
+  mounted() {
+    this.getwsdx();
   }
 };
 </script>

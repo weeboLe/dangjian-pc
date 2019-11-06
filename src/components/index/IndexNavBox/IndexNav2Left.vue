@@ -4,10 +4,12 @@
       <a href="#" class="title">网上党校</a>
     </div>
     <div class="onlineSchool">
-      <div class="onlineHref" v-for="(o,index) in online_data" :key="index">
-        <router-link tag="a" to="/photoDetails" href="#">
-          <img class="onlineImg" :src="o.onlineImage" alt />
-          <p class="onlineText">{{o.onlineTit}}</p>
+      <div class="onlineHref" v-for="(o,index) in onlineSchool1_data.list" :key="index">
+        <router-link
+          :to="{path:'/photoDetails',query:{'datakey':o.keyid,'chn':onlineSchool1_data.chn}}"
+        >
+          <img class="onlineImg" :src="base.imgurl+  o.sacleImage" alt />
+          <p class="onlineText">{{o.title}}</p>
         </router-link>
       </div>
     </div>
@@ -15,53 +17,35 @@
 </template>
 
 <script>
+import { common } from "@/api";
+import base from "@/api/base";
 export default {
   name: "IndexNav2Left",
   data() {
     return {
-      online_data: [
-        {
-          onlineImage: require("@/assets/images/study1.png"),
-          onlineTit: "党务工作规范学习123"
-        },
-        {
-          onlineImage: require("@/assets/images/study2.png"),
-          onlineTit: "党务工作规范学习"
-        },
-        {
-          onlineImage: require("@/assets/images/study3.png"),
-          onlineTit: "党务工作规范学习"
-        },
-        {
-          onlineImage: require("@/assets/images/study4.png"),
-          onlineTit: "党务工作规范学习"
-        },
-        {
-          onlineImage: require("@/assets/images/study5.png"),
-          onlineTit: "党务工作规范学习"
-        },
-        {
-          onlineImage: require("@/assets/images/study6.png"),
-          onlineTit: "党务工作规范学习"
-        },
-        {
-          onlineImage: require("@/assets/images/study1.png"),
-          onlineTit: "党务工作规范学习"
-        },
-        {
-          onlineImage: require("@/assets/images/study2.png"),
-          onlineTit: "党务工作规范学习"
-        },
-        {
-          onlineImage: require("@/assets/images/study3.png"),
-          onlineTit: "党务工作规范学习"
-        },
-        {
-          onlineImage: require("@/assets/images/study4.png"),
-          onlineTit: "党务工作规范学习"
-        }
-      ]
+      onlineSchool1_data: { list: [], chn: "" },
+      base
     };
+  },
+  methods: {
+    getwsdx() {
+      common
+        .column({
+          chn: "wsdx",
+          curPage: 1,
+          pageSize: 6
+        })
+        .then(res => {
+          console.log(res);
+
+          this.onlineSchool1_data.list = res.datas;
+          this.onlineSchool1_data.chn = "wsdx";
+        })
+        .catch(e => {});
+    }
+  },
+  mounted() {
+    this.getwsdx();
   }
 };
 </script>

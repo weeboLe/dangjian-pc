@@ -11,47 +11,32 @@
       <div class="affairs">
         <ul class="affairsLeft">
           <li>
-            <a class="afrNav" href="javascript:void(0)" @click="showAfrRtPage1">党务公开</a>
+            <a class="afrNav" href="javascript:;" @click="getdwgl('dwgk')">党务公开</a>
           </li>
           <li>
-            <a class="afrNav" href="javascript:void(0)" @click="showAfrRtPage2">党内奖惩</a>
+            <a class="afrNav" href="javascript:;" @click="getdwgl('dnjc')">党内奖惩</a>
           </li>
           <li>
-            <a class="afrNav" href="javascript:void(0)" @click="showAfrRtPage3">党建考核</a>
+            <a class="afrNav" href="javascript:;" @click="getdwgl('djkh')">党建考核</a>
           </li>
         </ul>
         <div class="affairsRight">
-          <div class="afrRt afrRt1" v-show="afrRtPage1">
+          <div class="afrRt afrRt1">
             <div class="afrTitle">
-              <p>党务公开</p>
+              <p v-if="dwtitle =='dwgk'">党务公开</p>
+              <p v-if="dwtitle =='dnjc'">党内奖惩</p>
+              <p v-if="dwtitle =='djkh'">党建考核</p>
             </div>
             <div class="afrCon">
-              <a href="#" class="afrConHref" v-for="(a1,index) in afrRtPage1_data" :key="index">
-                <p>{{a1.afrRtText}}</p>
-                <span>{{a1.afrRtTime}}</span>
-              </a>
-            </div>
-          </div>
-          <div class="afrRt afrRt2" v-show="afrRtPage2">
-            <div class="afrTitle">
-              <p>党内奖惩</p>
-            </div>
-            <div class="afrCon">
-              <a href="#" class="afrConHref" v-for="(a2,index) in afrRtPage2_data" :key="index">
-                <p>{{a2.afrRtText}}</p>
-                <span>{{a2.afrRtTime}}</span>
-              </a>
-            </div>
-          </div>
-          <div class="afrRt afrRt3" v-show="afrRtPage3">
-            <div class="afrTitle">
-              <p>党建考核</p>
-            </div>
-            <div class="afrCon">
-              <a href="#" class="afrConHref" v-for="(a3,index) in afrRtPage3_data" :key="index">
-                <p>{{a3.afrRtText}}</p>
-                <span>{{a3.afrRtTime}}</span>
-              </a>
+              <router-link
+                class="afrConHref"
+                v-for="(a1,index) in afrRtPage1_data.list"
+                :key="index"
+                :to="{path:'/informDetails',query:{'datakey':a1.keyid,'chn':afrRtPage1_data.chn }}"
+              >
+                <p>{{a1.title}}</p>
+                <span>{{a1.createtime | createtime('mm-dd') }}</span>
+              </router-link>
             </div>
           </div>
         </div>
@@ -61,85 +46,33 @@
 </template>
 
 <script>
+import { common } from "@/api";
 export default {
   name: "AffairsBox",
   data() {
     return {
-      afrRtPage1: true,
-      afrRtPage2: false,
-      afrRtPage3: false,
-      afrRtPage1_data: [
-        {
-          afrRtText: "图解党支部书记、委员工作职责",
-          afrRtTime: "09-22"
-        },
-        {
-          afrRtText: "图解党支部书记、委员工作职责",
-          afrRtTime: "09-22"
-        },
-        {
-          afrRtText: "党支部书记要会解难题",
-          afrRtTime: "09-22"
-        },
-        {
-          afrRtText: "党支部书记要会解难题",
-          afrRtTime: "09-22"
-        }
-      ],
-      afrRtPage2_data: [
-        {
-          afrRtText: "图解党支部书记、委员工作职责",
-          afrRtTime: "09-22"
-        },
-        {
-          afrRtText: "党支部书记要会解难题",
-          afrRtTime: "09-22"
-        },
-        {
-          afrRtText: "图解党支部书记、委员工作职责",
-          afrRtTime: "09-22"
-        },
-        {
-          afrRtText: "党支部书记要会解难题",
-          afrRtTime: "09-22"
-        }
-      ],
-      afrRtPage3_data: [
-        {
-          afrRtText: "党支部书记要会解难题",
-          afrRtTime: "09-22"
-        },
-        {
-          afrRtText: "党支部书记要会解难题",
-          afrRtTime: "09-22"
-        },
-        {
-          afrRtText: "图解党支部书记、委员工作职责",
-          afrRtTime: "09-22"
-        },
-        {
-          afrRtText: "图解党支部书记、委员工作职责",
-          afrRtTime: "09-22"
-        }
-      ]
+      afrRtPage1_data: { list: [], chn: "" },
+      dwtitle: ""
     };
   },
   methods: {
-    showAfrRtPage1() {
-      this.afrRtPage1 = true;
-      this.afrRtPage2 = false;
-      this.afrRtPage3 = false;
-    },
-    showAfrRtPage2() {
-      this.afrRtPage1 = false;
-      this.afrRtPage2 = true;
-      this.afrRtPage3 = false;
-    },
-    showAfrRtPage3() {
-      this.afrRtPage1 = false;
-      this.afrRtPage2 = false;
-      this.afrRtPage3 = true;
+    getdwgl(val) {
+      common
+        .column({
+          chn: val,
+          curPage: 1,
+          pageSize: 10
+        })
+        .then(res => {
+          this.afrRtPage1_data.list = res.datas;
+          this.afrRtPage1_data.chn = val;
+          this.dwtitle = val;
+        })
+        .catch(e => {});
     }
+  },
+  mounted() {
+    this.getdwgl("dwgk");
   }
 };
 </script>
