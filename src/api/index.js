@@ -7,7 +7,9 @@ const url = '/dangjian_api';
 // 通用api
 export const common = {
   column: (par) => post(url + 'api/cms/channel/channleListData', par),
-  columnData: (par) => post(url + 'api/cms/channel/channleContentData', par)
+  columnData: (par) => post(url + 'api/cms/channel/channleContentData', par),
+
+  getuserInfo: (par) => post(url + 'api/member/getUserInfo', par)
   // 栏目
 }
 // 登录
@@ -44,6 +46,12 @@ export const partyAffairs = {
 // 党员管理
 export const partyMember = {
 
+  // 获取个人组织关系信息返回顶部
+  getParty: (par) => post(url + 'api/pb/relationChange/getParty', par),
+  // 党员关系转接返回顶部
+  changeParty: (par) => post(url + 'api/pb/relationChange/save', par),
+  // 全部党支部信息
+  getAllOrg: (par) => post(url + 'api/common/getAllOrg', par)
 }
 // 群团工作
 export const regiment = {

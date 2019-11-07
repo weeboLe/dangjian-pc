@@ -52,6 +52,7 @@ export default {
         localStorage.setItem("ticket", "");
         localStorage.setItem("sessionId", "");
         localStorage.setItem("user", "");
+        localStorage.setItem("userparty", "");
         this.$router.push({ name: "Login" });
       }
     }

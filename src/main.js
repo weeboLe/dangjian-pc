@@ -8,10 +8,12 @@ import 'babel-polyfill'
 import Highcharts from 'highcharts';//highcharts的引入
 import store from './store';// 状态管理
 
-import { Message } from 'element-ui';
+import { Message, Button, Dialog } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(Highcharts);
+Vue.use(Button);
+Vue.use(Dialog);
 // Vue.use(Message);
 Vue.prototype.$message = Message;
 

@@ -14,21 +14,40 @@
         <div class="frameTit">
           <p>组织架构</p>
         </div>
-        <!-- <iframe src="pageContent/renderNoAuth/deptTree?par_keyid=" frameborder="0" style="width:100%;height:800px;"> -->
-
-        <!-- </iframe> -->
+        <iframe
+          :src="base.url + 'pageContent/renderNoAuth/deptTree?par_keyid=' + deptId"
+          frameborder="0"
+          style="width:100%;height:800px;"
+        ></iframe>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import base from "@/api/base";
+import { partyMember } from "@/api";
+
 export default {
   name: "MemberFrameBox",
   data() {
     return {
-      url
+      base,
+      deptId: ""
     };
+  },
+  methods: {
+    async getParty() {
+      let party = JSON.parse(localStorage.getItem("userparty"));
+      if (!party) {
+        party = await partyMember.getParty({});
+        localStorage.setItem("userparty", JSON.stringify(party));
+      }
+      this.deptId = party.data.deptId;
+    }
+  },
+  mounted() {
+    this.getParty();
   }
 };
 </script>

@@ -12,7 +12,7 @@
             :to="{path:'/newsParty',query:{'datakey':item.keyid,chn:rightHrefs_data.chn}}"
           >
             <p class="hrefText">{{item.title}}</p>
-            <span class="hrefTime">{{item.createtime | createtime}}</span>
+            <span class="hrefTime">{{item.createtime | createtime('mm-dd')}}</span>
           </router-link>
         </li>
       </ul>
@@ -24,7 +24,7 @@
             :title="item.title"
           >
             <p class="hrefText">{{item.title}}</p>
-            <span class="hrefTime">{{item.createtime | createtime}}</span>
+            <span class="hrefTime">{{item.createtime | createtime('mm-dd')}}</span>
           </router-link>
         </li>
       </ul>
@@ -70,7 +70,7 @@ export default {
         })
         .catch(e => {});
     },
-    getzdwj() {
+    gettzggd() {
       common
         .column({ chn: "tzggd", curPage: 1, pageSize: 6 })
         .then(res => {
@@ -83,7 +83,7 @@ export default {
 
   mounted() {
     this.getTzgg();
-    this.getzdwj();
+    this.gettzggd();
   },
   filters: {
     createtime(val) {

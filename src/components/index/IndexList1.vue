@@ -19,7 +19,7 @@
             :title="l.title"
           >
             <p class="hrefText">{{l.title}}</p>
-            <span class="hrefTime">{{l.createtime | createtime}}</span>
+            <span class="hrefTime">{{l.createtime | createtime('mm-dd')}}</span>
           </router-link>
         </li>
       </ul>
@@ -31,7 +31,7 @@
             :title="r.title"
           >
             <p class="hrefText">{{r.title}}</p>
-            <span class="hrefTime">{{r.createtime | createtime}}</span>
+            <span class="hrefTime">{{r.createtime | createtime('mm-dd')}}</span>
           </router-link>
         </li>
       </ul>

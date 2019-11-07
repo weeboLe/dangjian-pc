@@ -129,10 +129,13 @@
           <label for="zfbBox">
             <img class="payMode-zfb" src="~@/assets/images/payMode-zfb.png" alt />
           </label>
-          <input class="modeSelect" type="radio" name="select" />
-          <img class="payMode-wx" src="~@/assets/images/payMode-wx.png" alt />
+
+          <input class="modeSelect" type="radio" name="select" id="alipay" />
+          <label for="alipay">
+            <img class="payMode-wx" src="~@/assets/images/payMode-wx.png" alt />
+          </label>
           <div class="payBtnBox">
-            <input class="payBtn" type="submit" value="确定缴纳" />
+            <input class="payBtn" type="button" value="确定缴纳" />
           </div>
         </form>
       </div>

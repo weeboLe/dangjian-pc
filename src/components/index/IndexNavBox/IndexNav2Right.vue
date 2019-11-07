@@ -28,8 +28,7 @@ export default {
       leftHrefs_data: { list: [] }
     };
   },
-  // 1192010041935400961
-  // whzn
+
   methods: {
     getzgzj(val) {
       common
@@ -45,7 +44,7 @@ export default {
               this.leftHrefs_data.list.push(res);
             }
           });
-          console.log(this.leftHrefs_data.list);
+          // console.log(this.leftHrefs_data.list);
         })
         .catch(e => {});
     }

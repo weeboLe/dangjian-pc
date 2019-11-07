@@ -1,15 +1,13 @@
 <template>
   <div class="onlineSchoolBox">
     <div class="titleBox">
-      <a href="#" class="title">
-        职工之家
-      </a>
+      <a href="#" class="title">职工之家</a>
     </div>
     <div class="onlineSchool">
-      <div class="onlineHref" v-for="(o,index) in online_data" :key="index">
-        <router-link tag="a" to="/photoDetails" href="#">
-          <img class="onlineImg" :src="o.onlineImage" alt="">
-          <p class="onlineText">{{o.onlineTit}}</p>
+      <div class="onlineHref" v-for="(o,index) in online_data.list" :key="index">
+        <router-link :to="{path:'/informDetails',query:{'datakey':o.keyid,'chn':o.chn}}">
+          <img class="onlineImg" :src=" base.imgurl + o.sacleImage" alt />
+          <p class="onlineText">{{o.title}}</p>
         </router-link>
       </div>
     </div>
@@ -17,91 +15,95 @@
 </template>
 
 <script>
-    export default {
-        name: "IndexNav5Left",
-      data(){
-        return{
-          online_data:[
-            {
-              onlineImage:require('@/assets/images/sec1-right.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study2.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study3.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study4.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study5.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study6.png'),
-              onlineTit:'加强新形势下社区党建工作'
+import { common } from "@/api";
+import base from "@/api/base";
+export default {
+  name: "IndexNav5Left",
+  data() {
+    return {
+      online_data: { list: [] },
+      base
+    };
+  },
+  methods: {
+    getzgzj(val) {
+      common
+        .column({
+          chn: val,
+          curPage: 1,
+          pageSize: 2
+        })
+        .then(res => {
+          res.datas.map(res => {
+            if (res) {
+              res.chn = val;
+              this.online_data.list.push(res);
             }
-          ]
-        }
-      }
+          });
+          console.log(this.leftHrefs_data.list);
+        })
+        .catch(e => {});
     }
+  },
+  mounted() {
+    this.getzgzj("jszn");
+    this.getzgzj("whzn");
+    this.getzgzj("cyzn");
+    this.getzgzj("jyzn");
+  }
+};
 </script>
 
 <style scoped>
-  .onlineSchoolBox{
-    float:left;
-    width:450px;
-    height:460px;
-    margin-left:30px;
-    margin-top: 15px;
-    padding-right: 15px;
-    border-right: 1px dashed #dcdcdc;
-  }
-  .onlineSchoolBox .titleBox{
-    width:100%;
-    border-bottom: 1px solid #dcdcdc;
-  }
-  .titleBox .title{
-    font-size:20px;
-    color:black;
-    font-weight: bold;
-    display: inline-block;
-    margin-right:22px;
-    line-height:22px;
-    padding-left:10px;
-    border-left: 4px solid #d02424;
-  }
-  .onlineSchoolBox .onlineSchool{
-    width:100%;
-    height:390px;
-    overflow-y: auto;
-    margin-top: 15px;
-  }
-  .onlineHref{
-    display: inline-block;
-    margin:0 12px;
-  }
-  .onlineSchool .onlineHref:nth-child(3n){
-    margin-right: 0;
-  }
-  .onlineHref .onlineImg{
-    width:120px;
-    height:80px;
-  }
-  .onlineHref .onlineText{
-    font-size: 15px;
-    color:black;
-    line-height: 20px;
-    margin-top: 10px;
-    width:120px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-  }
+.onlineSchoolBox {
+  float: left;
+  width: 450px;
+  height: 460px;
+  margin-left: 30px;
+  margin-top: 15px;
+  padding-right: 15px;
+  border-right: 1px dashed #dcdcdc;
+}
+.onlineSchoolBox .titleBox {
+  width: 100%;
+  border-bottom: 1px solid #dcdcdc;
+}
+.titleBox .title {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 22px;
+  line-height: 22px;
+  padding-left: 10px;
+  border-left: 4px solid #d02424;
+}
+.onlineSchoolBox .onlineSchool {
+  width: 100%;
+  height: 390px;
+  overflow-y: auto;
+  margin-top: 15px;
+}
+.onlineHref {
+  display: inline-block;
+  margin: 0 12px;
+}
+.onlineSchool .onlineHref:nth-child(3n) {
+  margin-right: 0;
+}
+.onlineHref .onlineImg {
+  width: 120px;
+  height: 80px;
+}
+.onlineHref .onlineText {
+  font-size: 15px;
+  color: black;
+  line-height: 20px;
+  margin-top: 10px;
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
 </style>

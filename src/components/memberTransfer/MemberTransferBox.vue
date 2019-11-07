@@ -4,11 +4,11 @@
     <div class="transferBox">
       <p class="siteBox">
         当前位置：
-        <a href="#" class="site">首页</a>
+        <a href="javascript:;" class="site">首页</a>
         <span>&gt;</span>
-        <a href="#" class="site">党员管理</a>
+        <a href="javascript:;" class="site">党员管理</a>
         <span>&gt;</span>
-        <a href="#" class="site">党组织关系转接</a>
+        <a href="javascript:;" class="site">党组织关系转接</a>
       </p>
       <p class="transferTit">当前党组织所有信息</p>
       <table cellspacing="0" class="transferNow">
@@ -19,10 +19,10 @@
           <td>转入党组织时间</td>
         </tr>
         <tr>
-          <td>张大脸</td>
-          <td>中共山阳县委员会组织部支部委员会</td>
-          <td>陕西省商洛市山阳县</td>
-          <td>1970-01-01</td>
+          <td>{{userparty.userName}}</td>
+          <td>{{userparty.name}}</td>
+          <td>{{userparty.address || '无'}}</td>
+          <td>{{userparty.operateTime || '无'}}</td>
         </tr>
       </table>
       <p class="transferHint">说明：如需要转接党组织关系请选择或查询您要转接到的党组织关系。</p>
@@ -30,47 +30,99 @@
         <p>网上党支部</p>
       </div>
       <div class="selectOnline">
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
+        <div class="selectOnline_s" v-for="(item,index) in partyData" :key="index">
+          <a
+            href="javascript:;"
+            :class="{'active':active == item.id}"
+            @click="selected(item.id)"
+          >{{item.name}}</a>
         </div>
       </div>
       <div class="confirmBox">
-        <a href="#" class="transferBtn">确认转接</a>
+        <el-button type="text" class="transferBtn" @click="dialogVisible = active != ''">确认转接</el-button>
       </div>
+
+      <el-dialog
+        title="提示"
+        :visible.sync="dialogVisible"
+        width="30%"
+        @click="dialogVisible = false"
+      >
+        <span>确认要转接至该组织吗？</span>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="submit">确 定</el-button>
+        </span>
+      </el-dialog>
     </div>
   </div>
 </template>
 
 <script>
+import { partyMember } from "@/api";
 export default {
-  name: "MemberTransferBox"
+  name: "MemberTransferBox",
+  data() {
+    return {
+      dialogVisible: false,
+      userparty: {
+        address: "",
+        operateTime: "",
+        name: "",
+        deptId: "",
+        userName: ""
+      },
+      partyData: [],
+      active: ""
+    };
+  },
+  methods: {
+    async getParty() {
+      let party = JSON.parse(localStorage.getItem("userparty"));
+      if (!party) {
+        party = await partyMember.getParty({});
+        localStorage.setItem("userparty", JSON.stringify(party));
+      }
+      this.userparty = party.data;
+    },
+    async getAllOrg() {
+      let allparty = await partyMember.getAllOrg({});
+      this.partyData = allparty.datas;
+    },
+    selected(id) {
+      if (this.active == id) {
+        this.active = "";
+        return;
+      }
+      this.active = id;
+    },
+    submit() {
+      this.dialogVisible = false;
+      let data = {
+        "relationChangeDto.fromOrg": this.active,
+        "relationChangeDto.toOrg": this.userparty.deptId
+      };
+      partyMember
+        .changeParty(data)
+        .then(res => {
+          if (res.type == "success") {
+            this.$message({
+              showClose: true,
+              message: "转接成功",
+              type: "success"
+            });
+            this.active = "";
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  },
+  mounted() {
+    this.getParty();
+    this.getAllOrg();
+  }
 };
 </script>
 
@@ -91,6 +143,7 @@ export default {
   margin: 40px 0 20px;
 }
 .transferNow {
+  width: 100%;
   background-color: #f8f8f8;
   border: 1px solid #bfbfbf;
   font-size: 15px;
@@ -102,7 +155,7 @@ export default {
   width: 25%;
   border-right: 1px solid #bfbfbf;
   border-bottom: 1px solid #bfbfbf;
-  padding: 10px 0;
+  padding: 10px;
 }
 .transferNow tr td:nth-child(4) {
   border-right: none;
@@ -131,12 +184,16 @@ export default {
 }
 .transferBox .selectOnline {
   margin-top: 30px;
+  height: 300px;
+  overflow: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 .transferBox .selectOnline_s {
-  width: 260px;
+  width: 33.33333%;
   height: 30px;
   line-height: 30px;
-  border: 1px solid #bfbfbf;
+  box-shadow: 0 0 1px 1px #ccc;
   display: inline-block;
   background-color: #eeeeee;
 }
@@ -145,7 +202,14 @@ export default {
   color: #818181;
   padding: 0 15px;
   border-radius: 3px;
-  display: inline-block;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.selectOnline_s a.active {
+  color: #fff;
+  background-color: #ff0000;
 }
 .transferBox .confirmBox {
   width: 100%;
@@ -156,9 +220,6 @@ export default {
   color: white;
   background-color: #ff0000;
   width: 240px;
-  line-height: 45px;
-  display: inline-block;
-  border-radius: 5px;
   margin-top: 30px;
   margin-bottom: 50px;
 }
