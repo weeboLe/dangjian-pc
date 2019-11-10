@@ -1,92 +1,53 @@
-@charset "utf-8";
-/*CSS Document*/
-.bodyLearn{
-    width:100%;
-}
-.bodyLearn .learnContent{
-    width:1000px;
-    margin:0 auto;
-    min-height: 600px;
-}
-.learnContent .learnBox{
-    border:1px solid #dcdcdc;
-}
-/*learnBox*/
-.learnBox{
-    padding:14px 21px;
-    margin-bottom:130px;
-}
-.learnBox .firstNavs{
-
-}
-.firstNavs .firstNav{
-    display: inline-block;
-    font-size: 15px;
-    color:black;
-    line-height:30px;
-    padding:0 14px;
-    border-radius:5px;
-}
-.firstNavs .firstNav_red{
-    color:#fe4e4e;
-    background-color: #ffe0e0;
-}
-.secondNavs{
-    margin-top:12px;
-    margin-bottom:35px;
-}
-.secondNavs .secondNav{
-    font-size: 14px;
-    color:black;
-    border-bottom:1px solid white;
-    margin-left: 18px;
-    line-height: 20px;
-}
-.secondNavs .secondNav_red{
-    color:#ff0000;
-    border-bottom:1px solid #ff0000;
-}
-
-.second_s .second{
-    width:100%;
-}
-.second1 .sec1{
-    display:inline-block;
-    background-color: #eeeeee;
-    border-radius: 6px;
-    box-shadow: 5px 5px 6px 1px #dfdede;
-    margin-bottom: 50px;
-    margin-right: 50px;
-    margin-left: 50px;
-}
-.second .sec1:nth-child(2n){
-    margin-right: 0;
-}
-.sec1 .sec1Text{
-    font-size: 12px;
-    color:#838383;
-    text-indent: 10px;
-    line-height: 40px;
-}
-.sec1 .sec1Bottom{
-    padding-bottom: 10px;
-}
-.sec1Bottom .sec1Time{
-    font-size: 11px;
-    color:white;
-    background-color: #b5b5b5;
-    line-height: 25px;
-    padding:0 10px;
-    display: inline-block;
-    border-radius: 3px;
-    margin-left: 10px;
-}
-.sec1Bottom .sec1Add{
-    font-size: 11px;
-    color:#838383;
-    float:right;
-    margin-right:10px;
-}
-.sec1Add .studyNum{
-    color:#fd3f3f;
-}
+f (cp < 0xce0)
+                        return false;
+                    if (cp < 0xce2)
+                        return true;
+                    return false;
+                }
+                if (cp < 0xd4e) {
+                    if (cp < 0xcf1)
+                        return false;
+                    if (cp < 0xcf3)
+                        return true;
+                    if (cp < 0xd05)
+                        return false;
+                    if (cp < 0xd0d)
+                        return true;
+                    if (cp < 0xd0e)
+                        return false;
+                    if (cp < 0xd11)
+                        return true;
+                    if (cp < 0xd12)
+                        return false;
+                    if (cp < 0xd3b)
+                        return true;
+                    if (cp === 0xd3d)
+                        return true;
+                    return false;
+                }
+                if (cp === 0xd4e)
+                    return true;
+                if (cp < 0xd54)
+                    return false;
+                if (cp < 0xd57)
+                    return true;
+                if (cp < 0xd5f)
+                    return false;
+                if (cp < 0xd62)
+                    return true;
+                if (cp < 0xd7a)
+                    return false;
+                if (cp < 0xd80)
+                    return true;
+                if (cp < 0xd85)
+                    return false;
+                if (cp < 0xd97)
+                    return true;
+                if (cp < 0xd9a)
+                    return false;
+                if (cp < 0xdb2)
+                    return true;
+                return false;
+            }
+            if (cp < 0xe8a) {
+         

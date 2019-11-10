@@ -1,27 +1,13 @@
-<template>
-  <div class="content">
-    <index-header></index-header>
-    <public-nav></public-nav>
-    <member-dues-box></member-dues-box>
-    <index-footer></index-footer>
-  </div>
-</template>
-
-<script>
-import IndexHeader from "../components/index/IndexHeader";
-import PublicNav from "../components/publicNav";
-import MemberDuesBox from "../components/memberDues/MemberDuesBox";
-import IndexFooter from "../components/index/IndexFooter";
-export default {
-  name: "MemberDues",
-  components: { IndexFooter, MemberDuesBox, PublicNav, IndexHeader }
-};
-</script>
-
-<style scoped>
-.content {
-  min-width: 1000px;
-  width: 100%;
-  height: 100%;
-}
-</style>
+trans &Equal\ Size<Tab>^W=		&Azonos\ magasság<Tab>^W=
+menutrans &Max\ Height<Tab>^W_		Ma&x\ magasság<Tab>^W_
+menutrans M&in\ Height<Tab>^W1_		&Min\ magasság<Tab>^W1_
+menutrans Max\ &Width<Tab>^W\|		Max\ &szélesség<Tab>^W\|
+menutrans Min\ Widt&h<Tab>^W1\|		Mi&n\ szélesség<Tab>^W1\|
+menutrans Move\ &To			&Elmozdítás
+menutrans &Top<Tab>^WK			&Fel<Tab>^WK
+menutrans &Bottom<Tab>^WJ		&Le<Tab>^WJ
+menutrans &Left\ side<Tab>^WH		&Balra<Tab>^WH
+menutrans &Right\ side<Tab>^WL		&Jobbra<Tab>^WL
+menutrans Rotate\ &Up<Tab>^WR		Gördítés\ &felfelé<Tab>^WR
+menutrans Rotate\ &Down<Tab>^Wr		Gördítés\ &lefelé<Tab>^Wr
+menutrans Select\ Fo&nt\.\.\.		&Betûtípus\.\.\

@@ -1,25 +1,45 @@
-<template>
-  <div class="pageContent">
-      <index-header></index-header>
-      <public-nav></public-nav>
-      <file-details-header></file-details-header>
-      <file-details-center></file-details-center>
-      <membership-form-footer></membership-form-footer>
-  </div>
-</template>
-
-<script>
-    import IndexHeader from "../components/index/IndexHeader";
-    import PublicNav from "../components/publicNav";
-    import FileDetailsHeader from "../components/fileDetails/fileDetailsHeader";
-    import FileDetailsCenter from "../components/fileDetails/fileDetailsCenter";
-    import MembershipFormFooter from "../components/membershipForm/membershipFormFooter";
-    export default {
-        name: "FileDetails",
-      components: {MembershipFormFooter, FileDetailsCenter, FileDetailsHeader, PublicNav, IndexHeader}
-    }
-</script>
-
-<style scoped>
-
-</style>
+# created by tools/loadICU.tcl -- do not edit
+namespace eval ::tcl::clock {
+    ::msgcat::mcset it DAYS_OF_WEEK_ABBREV [list \
+        "dom"\
+        "lun"\
+        "mar"\
+        "mer"\
+        "gio"\
+        "ven"\
+        "sab"]
+    ::msgcat::mcset it DAYS_OF_WEEK_FULL [list \
+        "domenica"\
+        "luned\u00ec"\
+        "marted\u00ec"\
+        "mercoled\u00ec"\
+        "gioved\u00ec"\
+        "venerd\u00ec"\
+        "sabato"]
+    ::msgcat::mcset it MONTHS_ABBREV [list \
+        "gen"\
+        "feb"\
+        "mar"\
+        "apr"\
+        "mag"\
+        "giu"\
+        "lug"\
+        "ago"\
+        "set"\
+        "ott"\
+        "nov"\
+        "dic"\
+        ""]
+    ::msgcat::mcset it MONTHS_FULL [list \
+        "gennaio"\
+        "febbraio"\
+        "marzo"\
+        "aprile"\
+        "maggio"\
+        "giugno"\
+        "luglio"\
+        "agosto"\
+        "settembre"\
+        "ottobre"\
+        "novembre"\
+  

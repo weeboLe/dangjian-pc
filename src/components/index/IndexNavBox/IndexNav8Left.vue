@@ -1,108 +1,93 @@
-<template>
-  <div class="onlineSchoolBox">
-    <div class="titleBox">
-      <a href="#" class="title">
-        版面一
-      </a>
-    </div>
-    <ul class="frmRseMask">
-      <li class="maskUnder">
-        <router-link tag="a" to="/party" href='#' >
-          <img class="mskUdrImg" src="~@/assets/images/maskLayer1.png" alt="">
-          <p class="mskUdrName">党员圈</p>
-          <p class="mskUdrNum">今日：<span>0</span>&nbsp;&nbsp;&nbsp;帖数：<span>29</span></p>
-        </router-link>
-      </li>
-      <li class="maskUnder">
-        <router-link tag="a" to="/party" href='#'>
-          <img class="mskUdrImg" src="~@/assets/images/maskLayer1.png" alt="">
-          <p class="mskUdrName">党员意见</p>
-          <p class="mskUdrNum">今日：<span>0</span>&nbsp;&nbsp;&nbsp;帖数：<span>29</span></p>
-        </router-link>
-      </li>
-      <li class="maskUnder">
-        <router-link tag="a" to="/party" href='#' >
-          <img class="mskUdrImg" src="~@/assets/images/maskLayer1.png" alt="">
-          <p class="mskUdrName">微投票</p>
-          <p class="mskUdrNum">今日：<span>0</span>&nbsp;&nbsp;&nbsp;主题：<span>0</span></p>
-        </router-link>
-      </li>
-    </ul>
-  </div>
-</template>
+'use strict';
 
-<script>
-    export default {
-        name: "IndexNav8Left"
+const codes = {};
+
+function createErrorType(code, message, Base) {
+  if (!Base) {
+    Base = Error
+  }
+
+  function getMessage (arg1, arg2, arg3) {
+    if (typeof message === 'string') {
+      return message
+    } else {
+      return message(arg1, arg2, arg3)
     }
-</script>
+  }
 
-<style scoped>
-  .onlineSchoolBox{
-    float:left;
-    width:450px;
-    height:460px;
-    margin-left:30px;
-    margin-top: 15px;
-    padding-right: 15px;
-    border-right: 1px dashed #dcdcdc;
+  class NodeError extends Base {
+    constructor (arg1, arg2, arg3) {
+      super(getMessage(arg1, arg2, arg3));
+    }
   }
-  .onlineSchoolBox .titleBox{
-    width:100%;
-    border-bottom: 1px solid #dcdcdc;
+
+  NodeError.prototype.name = Base.name;
+  NodeError.prototype.code = code;
+
+  codes[code] = NodeError;
+}
+
+// https://github.com/nodejs/node/blob/v10.8.0/lib/internal/errors.js
+function oneOf(expected, thing) {
+  if (Array.isArray(expected)) {
+    const len = expected.length;
+    expected = expected.map((i) => String(i));
+    if (len > 2) {
+      return `one of ${thing} ${expected.slice(0, len - 1).join(', ')}, or ` +
+             expected[len - 1];
+    } else if (len === 2) {
+      return `one of ${thing} ${expected[0]} or ${expected[1]}`;
+    } else {
+      return `of ${thing} ${expected[0]}`;
+    }
+  } else {
+    return `of ${thing} ${String(expected)}`;
   }
-  .titleBox .title{
-    font-size:20px;
-    color:black;
-    font-weight: bold;
-    display: inline-block;
-    margin-right:22px;
-    line-height:22px;
-    padding-left:10px;
-    border-left: 4px solid #d02424;
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
+function startsWith(str, search, pos) {
+	return str.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
+function endsWith(str, search, this_len) {
+	if (this_len === undefined || this_len > str.length) {
+		this_len = str.length;
+	}
+	return str.substring(this_len - search.length, this_len) === search;
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
+function includes(str, search, start) {
+  if (typeof start !== 'number') {
+    start = 0;
   }
-  .onlineSchoolBox .frmRseMask{
-    width:100%;
-    margin-top: 15px;
+
+  if (start + search.length > str.length) {
+    return false;
+  } else {
+    return str.indexOf(search, start) !== -1;
   }
-  .frmRseMask .maskUnder{
-    width:180px;
-    height:120px;
-    background-color: #7ecef4;
-    color:white;
-    position: relative;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px 2px #aaa9a9;
-    display: inline-block;
-    margin:20px;
+}
+
+createErrorType('ERR_INVALID_OPT_VALUE', function (name, value) {
+  return 'The value "' + value + '" is invalid for option "' + name + '"'
+}, TypeError);
+createErrorType('ERR_INVALID_ARG_TYPE', function (name, expected, actual) {
+  // determiner: 'must be' or 'must not be'
+  let determiner;
+  if (typeof expected === 'string' && startsWith(expected, 'not ')) {
+    determiner = 'must not be';
+    expected = expected.replace(/^not /, '');
+  } else {
+    determiner = 'must be';
   }
-  .frmRseMask .maskUnder:first-child{
-    background-color: #7ecef4;
-  }
-  .frmRseMask .maskUnder:nth-child(2){
-    background-color: #84ccc9;
-  }
-  .frmRseMask .maskUnder:nth-child(3){
-    background-color: #acd598;
-  }
-  .maskUnder .mskUdrImg{
-    width:60px;
-    height:60px;
-    float: left;
-    margin:10px;
-  }
-  .maskUnder .mskUdrName{
-    font-size: 20px;
-    float: left;
-    line-height: 67px;
-    margin-top: 10px;
-    color:white;
-  }
-  .maskUnder .mskUdrNum{
-    font-size: 16px;
-    position: absolute;
-    left:15px;
-    bottom:5px;
-    color:white;
-  }
-</style>
+
+  let msg;
+  if (endsWith(name, ' argument')) {
+    // For cases like 'first argument'
+    msg = `The ${name} ${determiner} ${oneOf(expected, 'type')}`;
+  } else {
+    const type = includes(name, '.') ? 'property' : 'argument';
+    msg = `The "${name}" ${type} ${determiner} ${oneOf(expected, 'type')

@@ -22,7 +22,7 @@ export default {
   width: 100%;
 }
 .banner {
-  width: 1000px;
+  min-width: 1000px;
   height: 100px;
   margin: 40px auto 30px;
 }

@@ -1,195 +1,134 @@
-<template>
-  <div class="newsBox">
-    <div class="titleBox">
-      <a href="#" class="title title1" @mouseenter="showList1()">
-        志愿者活动
-        <span class="titleBorder" v-show="tit1"></span>
-      </a>
-      <a href="#" class="title" @mouseenter="showList2()">
-        在线商城
-        <span class="titleBorder" v-show="tit2"></span>
-      </a>
-    </div>
-    <div class="hrefBox">
-      <div class="onlineSchool" v-show="tab1">
-        <div class="onlineHref" v-for="(v,index) in volunteerData" :key="index">
-          <router-link tag="a"  to="/people/peopleVolunteerActivity/peopleVolunteerActivity1" href="#">
-            <img class="onlineImg" :src="v.volunteerImage" alt="">
-            <p class="onlineText">{{v.volunteerTit}}</p>
-          </router-link>
-        </div>
-      </div>
-      <div class="onlineSchool" v-show="tab2">
-        <div class="onlineHref" v-for="(m,index) in mallData" :key="index">
-          <router-link tag="a" to="/people/peopleOnlineMall/peopleOnlineMall1" href="#">
-            <img class="onlineImg" :src="m.mallImage" alt="">
-            <p class="onlineText">{{m.mallTit}}</p>
-          </router-link>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
+'use strict';
 
-<script>
-    export default {
-        name: "IndexNav7Right",
-      data(){
-        return{
-          tab1:true,
-          tab2:false,
-          tit1:true,
-          tit2:false,
-          volunteerData:[
-            {
-              volunteerImage:require('@/assets/images/study1.png'),
-              volunteerTit:'党务工作规范学习123'
-            },
-            {
-              volunteerImage:require('@/assets/images/study2.png'),
-              volunteerTit:'党务工作规范学习'
-            },
-            {
-              volunteerImage:require('@/assets/images/study3.png'),
-              volunteerTit:'党务工作规范学习'
-            },
-            {
-              volunteerImage:require('@/assets/images/study4.png'),
-              volunteerTit:'党务工作规范学习'
-            },
-            {
-              volunteerImage:require('@/assets/images/study5.png'),
-              volunteerTit:'党务工作规范学习'
-            },
-            {
-              volunteerImage:require('@/assets/images/study6.png'),
-              volunteerTit:'党务工作规范学习'
-            },
-            {
-              volunteerImage:require('@/assets/images/study1.png'),
-              volunteerTit:'党务工作规范学习'
-            },
-            {
-              volunteerImage:require('@/assets/images/study2.png'),
-              volunteerTit:'党务工作规范学习'
-            },
-            {
-              volunteerImage:require('@/assets/images/study3.png'),
-              volunteerTit:'党务工作规范学习'
-            },
-            {
-              volunteerImage:require('@/assets/images/study4.png'),
-              volunteerTit:'党务工作规范学习'
-            }
-          ],
-          mallData:[
-            {
-              mallImage:require('@/assets/images/peopleMall-small.png'),
-              mallTit:'廉政文化 廉政口号 警示格言 桌面警示牌 桌牌 办公用品'
-            },
-            {
-              mallImage:require('@/assets/images/study1.png'),
-              mallTit:'党务工作规范学习'
-            },
-            {
-              mallImage:require('@/assets/images/study2.png'),
-              mallTit:'党务工作规范学习'
-            },
-            {
-              mallImage:require('@/assets/images/study3.png'),
-              mallTit:'党务工作规范学习'
-            },
-            {
-              mallImage:require('@/assets/images/study4.png'),
-              mallTit:'党务工作规范学习'
-            },
-            {
-              mallImage:require('@/assets/images/study5.png'),
-              mallTit:'党务工作规范学习'
-            }
-          ]
-        }
-      },
-      methods:{
-        showList1(){
-          this.tab1 = true;
-          this.tab2 = false;
-          this.tit1 = true;
-          this.tit2 = false;
-        },
-        showList2(){
-          this.tab1 = false;
-          this.tab2 = true;
-          this.tit1 = false;
-          this.tit2 = true;
-        }
-      }
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = processPattern;
+
+var _globby = require('globby');
+
+var _globby2 = _interopRequireDefault(_globby);
+
+var _pLimit = require('p-limit');
+
+var _pLimit2 = _interopRequireDefault(_pLimit);
+
+var _isGlob = require('is-glob');
+
+var _isGlob2 = _interopRequireDefault(_isGlob);
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
+var _minimatch = require('minimatch');
+
+var _minimatch2 = _interopRequireDefault(_minimatch);
+
+var _writeFile = require('./writeFile');
+
+var _writeFile2 = _interopRequireDefault(_writeFile);
+
+var _isObject = require('./utils/isObject');
+
+var _isObject2 = _interopRequireDefault(_isObject);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function processPattern(globalRef, pattern) {
+    var info = globalRef.info,
+        debug = globalRef.debug,
+        output = globalRef.output,
+        concurrency = globalRef.concurrency,
+        contextDependencies = globalRef.contextDependencies;
+
+    var globArgs = Object.assign({
+        cwd: pattern.context
+    }, pattern.fromArgs || {});
+
+    if (pattern.fromType === 'nonexistent') {
+        return Promise.resolve();
     }
-</script>
 
-<style scoped>
-  .newsBox{
-    float:left;
-    width:450px;
-    margin-left:30px;
-    margin-top: 15px;
-  }
-  .newsBox .titleBox{
-    width:100%;
-    border-bottom: 1px solid #dcdcdc;
-  }
-  .titleBox .title{
-    font-size:20px;
-    color:black;
-    font-weight: bold;
-    display: inline-block;
-    margin-right:8px;
-    line-height:22px;
-    position: relative;
-    padding-left:10px;
-  }
-  .titleBox .title1{
-    padding-left:10px;
-    border-left: 4px solid #d02424;
-  }
-  .title .titleBorder{
-    display: block;
-    width:90px;
-    height:2px;
-    background-color: #fe0000;
-    position:absolute;
-    left:5px;
-    top:33px;
-  }
-  .newsBox .hrefBox{
-    width:100%;
-  }
-  .hrefBox .onlineSchool{
-    width:100%;
-    height:390px;
-    overflow-y: auto;
-    margin-top: 15px;
-  }
-  .onlineHref{
-    display: inline-block;
-    margin:0 12px;
-  }
-  .onlineSchool .onlineHref:nth-child(3n){
-    margin-right: 0;
-  }
-  .onlineHref .onlineImg{
-    width:120px;
-    height:80px;
-  }
-  .onlineHref .onlineText{
-    font-size: 15px;
-    color:black;
-    line-height: 20px;
-    margin-top: 10px;
-    width:120px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-  }
-</style>
+    var limit = (0, _pLimit2.default)(concurrency || 100);
+
+    info('begin globbing \'' + pattern.glob + '\' with a context of \'' + pattern.context + '\'');
+    return (0, _globby2.default)(pattern.glob, globArgs).then(function (paths) {
+        return Promise.all(paths.map(function (from) {
+            return limit(function () {
+                var file = {
+                    force: pattern.force,
+                    absoluteFrom: _path2.default.resolve(pattern.context, from)
+                };
+                file.relativeFrom = _path2.default.relative(pattern.context, file.absoluteFrom);
+
+                if (pattern.flatten) {
+                    file.relativeFrom = _path2.default.basename(file.relativeFrom);
+                }
+
+                // This is so webpack is able to watch the directory and when
+                // a new file is added it triggeres a rebuild
+                var contextPath = _path2.default.dirname(_path2.default.resolve(from));
+                if (contextDependencies.indexOf(contextPath) === -1 && (0, _isGlob2.default)(pattern.glob)) {
+                    contextDependencies.push(contextPath);
+                }
+
+                debug('found ' + from);
+
+                // Check the ignore list
+                var il = pattern.ignore.length;
+                while (il--) {
+                    var ignoreGlob = pattern.ignore[il];
+
+                    var globParams = {
+                        dot: true,
+                        matchBase: true
+                    };
+
+                    var glob = void 0;
+                    if (typeof ignoreGlob === 'string') {
+                        glob = ignoreGlob;
+                    } else if ((0, _isObject2.default)(ignoreGlob)) {
+                        glob = ignoreGlob.glob || '';
+                        var ignoreGlobParams = Object.assign({}, ignoreGlob);
+                        delete ignoreGlobParams.glob;
+
+                        // Overwrite minimatch defaults
+                        globParams = Object.assign(globParams, ignoreGlobParams);
+                    } else {
+                        glob = '';
+                    }
+
+                    debug('testing ' + glob + ' against ' + file.relativeFrom);
+                    if ((0, _minimatch2.default)(file.relativeFrom, glob, globParams)) {
+                        info('ignoring \'' + file.relativeFrom + '\', because it matches the ignore glob \'' + glob + '\'');
+                        return Promise.resolve();
+                    } else {
+                        debug(glob + ' doesn\'t match ' + file.relativeFrom);
+                    }
+                }
+
+                // Change the to path to be relative for webpack
+                if (pattern.toType === 'dir') {
+                    file.webpackTo = _path2.default.join(pattern.to, file.relativeFrom);
+                } else if (pattern.toType === 'file') {
+                    file.webpackTo = pattern.to || file.relativeFrom;
+                } else if (pattern.toType === 'template') {
+                    file.webpackTo = pattern.to;
+                    file.webpackToRegExp = pattern.test;
+                }
+
+                if (_path2.default.isAbsolute(file.webpackTo)) {
+                    if (output === '/') {
+                        throw '[copy-webpack-plugin] Using older versions of webpack-dev-server, devServer.outputPath must be defined to write to absolute paths';
+                    }
+
+                    file.webpackTo = _path2.default.relative(output, file.webpackTo);
+                }
+
+                // ensure forward slashes
+                file.webpackTo = file.webpackTo.replace(/\\/g, '/');
+
+                info('determined that \'' + from + '\' should write to \'' + file.webpackTo + '\'');
+
+                return (0, _writeFile2.default)(globalRef, patt

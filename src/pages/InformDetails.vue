@@ -1,25 +1,55 @@
-<template>
-    <div class="pageContent">
-      <index-header></index-header>
-      <public-nav></public-nav>
-      <inform-details-header></inform-details-header>
-      <inform-details-center></inform-details-center>
-      <membership-form-footer></membership-form-footer>
-    </div>
-</template>
-
-<script>
-    import IndexHeader from "../components/index/IndexHeader";
-    import PublicNav from "../components/publicNav";
-    import InformDetailsHeader from "../components/informDetails/informDetailsHeader";
-    import InformDetailsCenter from "../components/informDetails/informDetailsCenter";
-    import MembershipFormFooter from "../components/membershipForm/membershipFormFooter";
-    export default {
-        name: "InformDetails",
-      components: {MembershipFormFooter, InformDetailsCenter, InformDetailsHeader, PublicNav, IndexHeader}
-    }
-</script>
-
-<style scoped>
-
-</style>
+git-add.exe
+git-am.exe
+git-annotate.exe
+git-apply.exe
+git-archive.exe
+git-bisect--helper.exe
+git-blame.exe
+git-branch.exe
+git-bundle.exe
+git-cat-file.exe
+git-check-attr.exe
+git-check-ignore.exe
+git-check-mailmap.exe
+git-check-ref-format.exe
+git-checkout-index.exe
+git-checkout.exe
+git-clean.exe
+git-clone.exe
+git-column.exe
+git-commit-tree.exe
+git-commit.exe
+git-commit-graph.exe
+git-config.exe
+git-count-objects.exe
+git-credential.exe
+git-describe.exe
+git-diff-files.exe
+git-diff-index.exe
+git-diff-tree.exe
+git-diff.exe
+git-difftool.exe
+git-env--helper.exe
+git-fast-export.exe
+git-fetch-pack.exe
+git-fetch.exe
+git-fmt-merge-msg.exe
+git-for-each-ref.exe
+git-fsck.exe
+git-gc.exe
+git-get-tar-commit-id.exe
+git-grep.exe
+git-hash-object.exe
+git-help.exe
+git-index-pack.exe
+git-init-db.exe
+git-interpret-trailers.exe
+git-log.exe
+git-ls-files.exe
+git-ls-remote.exe
+git-ls-tree.exe
+git-mailinfo.exe
+git-mailsplit.exe
+git-merge.exe
+git-merge-base.exe
+git-merge-

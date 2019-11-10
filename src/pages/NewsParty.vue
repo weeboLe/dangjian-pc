@@ -1,26 +1,22 @@
-<template>
-    <div class="pageContent">
-        <index-header></index-header>
-        <public-nav></public-nav>
-        <news-party-header></news-party-header>
-        <news-party-center></news-party-center>
-        <membership-form-footer></membership-form-footer>
+# help.fi.txt - fi GnuPG online help
+# Copyright (C) 2007 Free Software Foundation, Inc.
+#
+# This file is part of GnuPG.
+#
+# GnuPG is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+# 
+# GnuPG is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <https://www.gnu.org/licenses/>.
 
-    </div>
-</template>
 
-<script>
-    import IndexHeader from "../components/index/IndexHeader";
-    import PublicNav from "../components/publicNav";
-    import NewsPartyHeader from "../components/newsParty/newsPartyHeader";
-    import NewsPartyCenter from "../components/newsParty/newsPartyCenter";
-    import MembershipFormFooter from "../components/membershipForm/membershipFormFooter";
-    export default {
-        name: "NewsParty",
-      components: {MembershipFormFooter, NewsPartyCenter, NewsPartyHeader, PublicNav, IndexHeader}
-    }
-</script>
-
-<style scoped>
-
-</style>
+.gpg.edit_ownertrust.value
+Tämän arvon määrittäminen on sinun tehtäväsi, tätä arvoa ei koskaan 
+kerrota kolmansille osapuolille. Tarvitsemme 

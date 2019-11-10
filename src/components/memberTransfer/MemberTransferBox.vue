@@ -1,165 +1,182 @@
-<template>
-  <!--transfer-->
-  <div class="bodyTransfer">
-    <div class="transferBox">
-      <p class="siteBox">
-        当前位置：
-        <a href="#" class="site">首页</a>
-        <span>&gt;</span>
-        <a href="#" class="site">党员管理</a>
-        <span>&gt;</span>
-        <a href="#" class="site">党组织关系转接</a>
-      </p>
-      <p class="transferTit">当前党组织所有信息</p>
-      <table cellspacing="0" class="transferNow">
-        <tr>
-          <td>姓名</td>
-          <td>党组织名称</td>
-          <td>党组织所在地</td>
-          <td>转入党组织时间</td>
-        </tr>
-        <tr>
-          <td>张大脸</td>
-          <td>中共山阳县委员会组织部支部委员会</td>
-          <td>陕西省商洛市山阳县</td>
-          <td>1970-01-01</td>
-        </tr>
-      </table>
-      <p class="transferHint">说明：如需要转接党组织关系请选择或查询您要转接到的党组织关系。</p>
-      <div class="partyOnline">
-        <p>网上党支部</p>
-      </div>
-      <div class="selectOnline">
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-        <div class="selectOnline_s">
-          <a href="#">中共山阳县委员会组织部支部委员会</a>
-        </div>
-      </div>
-      <div class="confirmBox">
-        <a href="#" class="transferBtn">确认转接</a>
-      </div>
-    </div>
-  </div>
-</template>
+;(function () {
+  // windows: running 'npm blah' in this folder will invoke WSH, not node.
+  /* globals WScript */
+  if (typeof WScript !== 'undefined') {
+    WScript.echo(
+      'npm does not work when run\n' +
+      'with the Windows Scripting Host\n\n' +
+      '"cd" to a different directory,\n' +
+      'or type "npm.cmd <args>",\n' +
+      'or type "node npm <args>".'
+    )
+    WScript.quit(1)
+    return
+  }
 
-<script>
-export default {
-  name: "MemberTransferBox"
-};
-</script>
+  var unsupported = require('../lib/utils/unsupported.js')
+  unsupported.checkForBrokenNode()
 
-<style scoped>
-.bodyTransfer {
-  width: 100%;
-}
-.bodyTransfer .transferBox {
-  width: 960px;
-  margin: 0 auto 170px;
-  padding: 0 20px;
-  border: 1px solid #e5e5e5;
-  min-height: 600px;
-}
-.transferTit {
-  font-size: 15px;
-  color: #969696;
-  margin: 40px 0 20px;
-}
-.transferNow {
-  background-color: #f8f8f8;
-  border: 1px solid #bfbfbf;
-  font-size: 15px;
-  color: #7c7c7c;
-  line-height: 20px;
-  text-align: center;
-}
-.transferNow td {
-  width: 25%;
-  border-right: 1px solid #bfbfbf;
-  border-bottom: 1px solid #bfbfbf;
-  padding: 10px 0;
-}
-.transferNow tr td:nth-child(4) {
-  border-right: none;
-}
-.transferNow tr:last-child td {
-  border-bottom: none;
-}
-.transferBox .transferHint {
-  font-size: 12px;
-  color: #ff0000;
-  line-height: 24px;
-}
-.transferBox .partyOnline {
-  margin-top: 20px;
-  overflow: hidden;
-}
-.partyOnline img {
-  float: left;
-}
-.partyOnline p {
-  font-size: 15px;
-  color: #757575;
-  float: left;
-  margin-top: 12px;
-  margin-left: 10px;
-}
-.transferBox .selectOnline {
-  margin-top: 30px;
-}
-.transferBox .selectOnline_s {
-  width: 260px;
-  height: 30px;
-  line-height: 30px;
-  border: 1px solid #bfbfbf;
-  display: inline-block;
-  background-color: #eeeeee;
-}
-.selectOnline_s a {
-  font-size: 14px;
-  color: #818181;
-  padding: 0 15px;
-  border-radius: 3px;
-  display: inline-block;
-}
-.transferBox .confirmBox {
-  width: 100%;
-  text-align: center;
-}
-.confirmBox .transferBtn {
-  font-size: 18px;
-  color: white;
-  background-color: #ff0000;
-  width: 240px;
-  line-height: 45px;
-  display: inline-block;
-  border-radius: 5px;
-  margin-top: 30px;
-  margin-bottom: 50px;
-}
-</style>
+  var gfs = require('graceful-fs')
+  // Patch the global fs module here at the app level
+  var fs = gfs.gracefulify(require('fs'))
+
+  var EventEmitter = require('events').EventEmitter
+  var npm = module.exports = new EventEmitter()
+  var npmconf = require('./config/core.js')
+  var log = require('npmlog')
+  var inspect = require('util').inspect
+
+  // capture global logging
+  process.on('log', function (level) {
+    try {
+      return log[level].apply(log, [].slice.call(arguments, 1))
+    } catch (ex) {
+      log.verbose('attempt to log ' + inspect(arguments) + ' crashed: ' + ex.message)
+    }
+  })
+
+  var path = require('path')
+  var abbrev = require('abbrev')
+  var which = require('which')
+  var glob = require('glob')
+  var rimraf = require('rimraf')
+  var parseJSON = require('./utils/parse-json.js')
+  var aliases = require('./config/cmd-list').aliases
+  var cmdList = require('./config/cmd-list').cmdList
+  var plumbing = require('./config/cmd-list').plumbing
+  var output = require('./utils/output.js')
+  var startMetrics = require('./utils/metrics.js').start
+  var perf = require('./utils/perf.js')
+
+  perf.emit('time', 'npm')
+  perf.on('timing', function (name, finished) {
+    log.timing(name, 'Completed in', finished + 'ms')
+  })
+
+  npm.config = {
+    loaded: false,
+    get: function () {
+      throw new Error('npm.load() required')
+    },
+    set: function () {
+      throw new Error('npm.load() required')
+    }
+  }
+
+  npm.commands = {}
+
+  // TUNING
+  npm.limit = {
+    fetch: 10,
+    action: 50
+  }
+  // ***
+
+  npm.lockfileVersion = 1
+
+  npm.rollbacks = []
+
+  try {
+    // startup, ok to do this synchronously
+    var j = parseJSON(fs.readFileSync(
+      path.join(__dirname, '../package.json')) + '')
+    npm.name = j.name
+    npm.version = j.version
+  } catch (ex) {
+    try {
+      log.info('error reading version', ex)
+    } catch (er) {}
+    npm.version = ex
+  }
+
+  var commandCache = {}
+  var aliasNames = Object.keys(aliases)
+
+  var littleGuys = [ 'isntall', 'verison' ]
+  var fullList = cmdList.concat(aliasNames).filter(function (c) {
+    return plumbing.indexOf(c) === -1
+  })
+  var abbrevs = abbrev(fullList)
+
+  // we have our reasons
+  fullList = npm.fullList = fullList.filter(function (c) {
+    return littleGuys.indexOf(c) === -1
+  })
+
+  var registryRefer
+
+  Object.keys(abbrevs).concat(plumbing).forEach(function addCommand (c) {
+    Object.defineProperty(npm.commands, c, { get: function () {
+      if (!loaded) {
+        throw new Error(
+          'Call npm.load(config, cb) before using this command.\n' +
+            'See the README.md or bin/npm-cli.js for example usage.'
+        )
+      }
+      var a = npm.deref(c)
+      if (c === 'la' || c === 'll') {
+        npm.config.set('long', true)
+      }
+
+      npm.command = c
+      if (commandCache[a]) return commandCache[a]
+
+      var cmd = require(path.join(__dirname, a + '.js'))
+
+      commandCache[a] = function () {
+        var args = Array.prototype.slice.call(arguments, 0)
+        if (typeof args[args.length - 1] !== 'function') {
+          args.push(defaultCb)
+        }
+        if (args.length === 1) args.unshift([])
+
+        // Options are prefixed by a hyphen-minus (-, \u2d).
+        // Other dash-type chars look similar but are invalid.
+        Array(args[0]).forEach(function (arg) {
+          if (/^[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/.test(arg)) {
+            log.error('arg', 'Argument starts with non-ascii dash, this is probably invalid:', arg)
+          }
+        })
+
+        if (!registryRefer) {
+          registryRefer = [a].concat(args[0]).map(function (arg) {
+            // exclude anything that might be a URL, path, or private module
+            // Those things will always have a slash in them somewhere
+            if (arg && arg.match && arg.match(/\/|\\/)) {
+              return '[REDACTED]'
+            } else {
+              return arg
+            }
+          }).filter(function (arg) {
+            return arg && arg.match
+          }).join(' ')
+          npm.referer = registryRefer
+        }
+
+        cmd.apply(npm, args)
+      }
+
+      Object.keys(cmd).forEach(function (k) {
+        commandCache[a][k] = cmd[k]
+      })
+
+      return commandCache[a]
+    },
+    enumerable: fullList.indexOf(c) !== -1,
+    configurable: true })
+
+    // make css-case commands callable via camelCase as well
+    if (c.match(/-([a-z])/)) {
+      addCommand(c.replace(/-([a-z])/g, function (a, b) {
+        return b.toUpperCase()
+      }))
+    }
+  })
+
+  function defaultCb (er, data) {
+    log.disableProgress()
+    if (er) console.error(er.stack || er.message)
+    else output(data)
+  }
+
+ 

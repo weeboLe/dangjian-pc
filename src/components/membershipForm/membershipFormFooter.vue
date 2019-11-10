@@ -1,49 +1,40 @@
-<template>
-  <div class="bodyFooter">
-    <div class="footer">
-      <ul class="footerNavBox">
-        <li class="footerNav">
-          <a href="#">联系我们</a>
-          <span>|</span>
-        </li>
-        <li class="footerNav">
-          <a href="#">使用帮助</a>
-          <span>|</span>
-        </li>
-        <li class="footerNav">
-          <a href="#">网站地图</a>
-          <span>|</span>
-        </li>
-        <li class="footerNav">
-          <a href="#">网站纠错</a>
-          <span>|</span>
-        </li>
-        <li class="footerNav">
-          <a href="#">网站统计</a>
-        </li>
-      </ul>
-      <img class="footerBar" src="~@/assets/images/footerBar.jpg" alt />
-      <p class="bottomText">
-        地址：陕西省西安市雁塔区科技路48号创业广场B座
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        联系电话：18629352945
-      </p>
-      <p class="bottomText">
-        CopyRight@2016-2018&nbsp;&nbsp;
-        西安畅通捷软件科技有限公司智慧党建云平台
-      </p>
-    </div>
-  </div>
-</template>
+not declared in func params"));
+          } // Replace the Identifer node by our new NumberLiteral node
 
-<script>
-export default {
-  name: "membershipFormFooter"
-};
-</script>
 
-<style scoped>
-.bodyFooter {
-  background-color: red;
-}
-</style>
+          instrNode.args[0] = numberLiteralFromRaw(offsetInParams);
+        }
+      }
+      /**
+       * Global access
+       */
+
+
+      if (instrNode.id === "get_global" || instrNode.id === "set_global") {
+        var _instrNode$args2 = _slicedToArray(instrNode.args, 1),
+            _firstArg = _instrNode$args2[0];
+
+        if (isIdentifier(_firstArg) === true) {
+          var globalOffset = moduleContext.getGlobalOffsetByIdentifier( // $FlowIgnore: reference?
+          _firstArg.value);
+
+          if (typeof globalOffset === "undefined") {
+            // $FlowIgnore: reference?
+            throw new Error("global ".concat(_firstArg.value, " not found in module"));
+          } // Replace the Identifer node by our new NumberLiteral node
+
+
+          instrNode.args[0] = numberLiteralFromRaw(globalOffset);
+        }
+      }
+      /**
+       * Labels lookup
+       */
+
+
+      if (instrNode.id === "br") {
+        var _instrNode$args3 = _slicedToArray(instrNode.args, 1),
+            _firstArg2 = _instrNode$args3[0];
+
+        if (isIdentifier(_firstArg2) === true) {
+          // if the labels is no

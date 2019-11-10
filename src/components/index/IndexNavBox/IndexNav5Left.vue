@@ -1,107 +1,69 @@
-<template>
-  <div class="onlineSchoolBox">
-    <div class="titleBox">
-      <a href="#" class="title">
-        职工之家
-      </a>
-    </div>
-    <div class="onlineSchool">
-      <div class="onlineHref" v-for="(o,index) in online_data" :key="index">
-        <router-link tag="a" to="/photoDetails" href="#">
-          <img class="onlineImg" :src="o.onlineImage" alt="">
-          <p class="onlineText">{{o.onlineTit}}</p>
-        </router-link>
-      </div>
-    </div>
-  </div>
-</template>
+(property, declaration, fingerprints);
+        var prev = props[fingerprint];
 
-<script>
-    export default {
-        name: "IndexNav5Left",
-      data(){
-        return{
-          online_data:[
-            {
-              onlineImage:require('@/assets/images/sec1-right.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study2.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study3.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study4.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study5.png'),
-              onlineTit:'加强新形势下社区党建工作'
-            },
-            {
-              onlineImage:require('@/assets/images/study6.png'),
-              onlineTit:'加强新形势下社区党建工作'
+        if (prev && !dontRestructure.hasOwnProperty(property)) {
+            if (declaration.important && !prev.item.data.important) {
+                props[fingerprint] = {
+                    block: declarations,
+                    item: declarationItem
+                };
+
+                prev.block.remove(prev.item);
+
+                // TODO: use it when we can refer to several points in source
+                // declaration.loc = {
+                //     primary: declaration.loc,
+                //     merged: prev.item.data.loc
+                // };
+            } else {
+                declarations.remove(declarationItem);
+
+                // TODO: use it when we can refer to several points in source
+                // prev.item.data.loc = {
+                //     primary: prev.item.data.loc,
+                //     merged: declaration.loc
+                // };
             }
-          ]
-        }
-      }
-    }
-</script>
+        } else {
+            var prev = needless(props, declaration, fingerprints);
 
-<style scoped>
-  .onlineSchoolBox{
-    float:left;
-    width:450px;
-    height:460px;
-    margin-left:30px;
-    margin-top: 15px;
-    padding-right: 15px;
-    border-right: 1px dashed #dcdcdc;
-  }
-  .onlineSchoolBox .titleBox{
-    width:100%;
-    border-bottom: 1px solid #dcdcdc;
-  }
-  .titleBox .title{
-    font-size:20px;
-    color:black;
-    font-weight: bold;
-    display: inline-block;
-    margin-right:22px;
-    line-height:22px;
-    padding-left:10px;
-    border-left: 4px solid #d02424;
-  }
-  .onlineSchoolBox .onlineSchool{
-    width:100%;
-    height:390px;
-    overflow-y: auto;
-    margin-top: 15px;
-  }
-  .onlineHref{
-    display: inline-block;
-    margin:0 12px;
-  }
-  .onlineSchool .onlineHref:nth-child(3n){
-    margin-right: 0;
-  }
-  .onlineHref .onlineImg{
-    width:120px;
-    height:80px;
-  }
-  .onlineHref .onlineText{
-    font-size: 15px;
-    color:black;
-    line-height: 20px;
-    margin-top: 10px;
-    width:120px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-  }
-</style>
+            if (prev) {
+                declarations.remove(declarationItem);
+
+                // TODO: use it when we can refer to several points in source
+                // prev.item.data.loc = {
+                //     primary: prev.item.data.loc,
+                //     merged: declaration.loc
+                // };
+            } else {
+                declaration.fingerprint = fingerprint;
+
+                props[fingerprint] = {
+                    block: declarations,
+                    item: declarationItem
+                };
+            }
+        }
+    });
+
+    if (declarations.isEmpty()) {
+        list.remove(item);
+    }
+}
+
+module.exports = function restructBlock(ast) {
+    var stylesheetMap = {};
+    var fingerprints = Object.create(null);
+
+    walk(ast, {
+        visit: 'Rule',
+        reverse: true,
+        enter: function(node, item, list) {
+            var stylesheet = this.block || this.stylesheet;
+            var ruleId = (node.pseudoSignature || '') + '|' + node.prelude.children.first().id;
+            var ruleMap;
+            var props;
+
+            if (!stylesheetMap.hasOwnProperty(stylesheet.id)) {
+                ruleMap = {};
+                styleshee

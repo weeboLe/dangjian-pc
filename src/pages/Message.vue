@@ -1,23 +1,27 @@
-<template>
-    <div class="pageContent">
-      <index-header></index-header>
-      <public-nav></public-nav>
-      <message-header></message-header>
-      <membership-form-footer></membership-form-footer>
-    </div>
-</template>
+# created by tools/tclZIC.tcl - do not edit
 
-<script>
-    import IndexHeader from "../components/index/IndexHeader";
-    import PublicNav from "../components/publicNav";
-    import MessageHeader from "../components/message/messageHeader";
-    import MembershipFormFooter from "../components/membershipForm/membershipFormFooter";
-    export default {
-        name: "Message",
-      components: {MembershipFormFooter, MessageHeader, PublicNav, IndexHeader}
-    }
-</script>
-
-<style scoped>
-
-</style>
+set TZData(:Asia/Aqtau) {
+    {-9223372036854775808 12064 0 LMT}
+    {-1441164064 14400 0 +04}
+    {-1247544000 18000 0 +05}
+    {370724400 21600 0 +06}
+    {386445600 18000 0 +05}
+    {386449200 21600 1 +05}
+    {402256800 18000 0 +05}
+    {417985200 21600 1 +05}
+    {433792800 18000 0 +05}
+    {449607600 21600 1 +05}
+    {465339600 18000 0 +05}
+    {481064400 21600 1 +05}
+    {496789200 18000 0 +05}
+    {512514000 21600 1 +05}
+    {528238800 18000 0 +05}
+    {543963600 21600 1 +05}
+    {559688400 18000 0 +05}
+    {575413200 21600 1 +05}
+    {591138000 18000 0 +05}
+    {606862800 21600 1 +05}
+    {622587600 18000 0 +05}
+    {638312400 21600 1 +05}
+    {654642000 18000 0 +05}
+  

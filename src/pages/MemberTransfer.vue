@@ -1,27 +1,47 @@
-<template>
-  <div class="content">
-    <index-header></index-header>
-    <public-nav></public-nav>
-    <member-transfer-box></member-transfer-box>
-    <index-footer></index-footer>
-  </div>
-</template>
+package Test2::Hub::Interceptor::Terminator;
+use strict;
+use warnings;
 
-<script>
-import IndexHeader from "../components/index/IndexHeader";
-import PublicNav from "../components/publicNav";
-import MemberTransferBox from "../components/memberTransfer/MemberTransferBox";
-import IndexFooter from "../components/index/IndexFooter";
-export default {
-  name: "MemberTransfer",
-  components: { IndexFooter, MemberTransferBox, PublicNav, IndexHeader }
-};
-</script>
+our $VERSION = '1.302073';
 
-<style scoped>
-.content {
-  min-width: 1000px;
-  width: 100%;
-  height: 100%;
-}
-</style>
+
+1;
+
+__END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Test2::Hub::Interceptor::Terminator - Exception class used by
+Test2::Hub::Interceptor
+
+=head1 SOURCE
+
+The source code repository for Test2 can be found at
+F<http://github.com/Test-More/test-more/>.
+
+=head1 MAINTAINERS
+
+=over 4
+
+=item Chad Granum E<lt>exodist@cpan.orgE<gt>
+
+=back
+
+=head1 AUTHORS
+
+=over 4
+
+=item Chad Granum E<lt>exodist@cpan.orgE<gt>
+
+=back
+
+=head1 COPYRIGHT
+
+Copyright 2016 Chad Granum E<lt>exodist@cpan.orgE<gt>.
+
+This program is free software; you can redistribute it and/or
+modify it under the same terms as
