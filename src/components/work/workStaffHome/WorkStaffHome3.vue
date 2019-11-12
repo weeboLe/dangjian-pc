@@ -50,7 +50,7 @@ export default {
         .then(res => {
           this.staffHome_data.list = res.datas;
           this.staffHome_data.chn = val;
-          console.log(res);
+          //console.log(res);
         })
         .catch(e => {});
     }

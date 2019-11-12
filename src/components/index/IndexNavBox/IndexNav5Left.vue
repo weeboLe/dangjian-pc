@@ -40,7 +40,7 @@ export default {
               this.online_data.list.push(res);
             }
           });
-          console.log(this.leftHrefs_data.list);
+          //console.log(this.leftHrefs_data.list);
         })
         .catch(e => {});
     }

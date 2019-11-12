@@ -127,6 +127,8 @@ export default {
   line-height: 22px;
 }
 .forumReuse {
+  box-sizing: border-box;
+  padding: 0 10px;
   width: 1000px;
   margin: 0 auto;
 }

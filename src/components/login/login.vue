@@ -41,6 +41,7 @@ export default {
             localStorage.setItem("ticket", res.data.ticket);
             localStorage.setItem("sessionId", res.data.sessionId);
             localStorage.setItem("user", JSON.stringify(res.data));
+            this.$message({ message: "登录成功", type: "success" });
             this.$router.push({ name: "Index" });
           } else {
             this.$message.error({ message: "信息错误请核对后提交" });

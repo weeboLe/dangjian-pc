@@ -28,8 +28,9 @@ export default {
 
 <style scoped>
 .pageContent {
-display:flex;
-flex-direction: column;
+  min-width: 1000px;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 </style>

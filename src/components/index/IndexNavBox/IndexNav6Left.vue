@@ -75,7 +75,7 @@ export default {
   mounted() {
     this.getzgzj("xxtb").then(res => {
       //
-      console.log(res);
+      //console.log(res);
 
       this.leftHrefs_data.list = res.datas;
       this.leftHrefs_data.chn = "xxtb";

@@ -36,7 +36,7 @@ export default {
           pageSize: 6
         })
         .then(res => {
-          console.log(res);
+          //console.log(res);
 
           this.onlineSchool1_data.list = res.datas;
           this.onlineSchool1_data.chn = "wsdx";

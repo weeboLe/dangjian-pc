@@ -171,7 +171,7 @@ export default {
             }
           });
 
-          console.log(this.mbrRtReuse1_data.list);
+          //console.log(this.mbrRtReuse1_data.list);
         })
         .catch(e => {});
     }
